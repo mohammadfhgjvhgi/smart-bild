@@ -1,0 +1,1394 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>SmartBuild Palestine | أنظمة المباني الذكية والأتمتة</title>
+<meta name="description" content="SmartBuild Palestine — شركة فلسطينية رائدة في أنظمة المباني الذكية، الأتمتة، إنذار الحريق، كاميرات المراقبة، والطاقة الشمسية. جنوب الخليل - دورا.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Cairo:wght@300;400;600;700;800;900&family=Tajawal:wght@300;400;500;700;900&family=JetBrains+Mono:wght@400;500;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+<style>
+  :root{
+    --bg:#0a1628;
+    --bg-2:#112240;
+    --bg-3:#1a2842;
+    --accent:#ff6b35;
+    --accent-2:#ffb627;
+    --accent-3:#4ade80;
+    --text:#e6f1ff;
+    --text-2:#8892b0;
+    --border:#233554;
+    --card:rgba(17,34,64,0.85);
+    --shadow:0 10px 30px -10px rgba(2,12,27,0.7);
+    --gradient:linear-gradient(135deg,var(--accent) 0%,var(--accent-2) 100%);
+  }
+  *{margin:0;padding:0;box-sizing:border-box;}
+  html{scroll-behavior:smooth;}
+  body{
+    font-family:'Tajawal','Cairo',sans-serif;
+    background:var(--bg);color:var(--text);
+    line-height:1.7;overflow-x:hidden;
+  }
+  ::selection{background:var(--accent);color:var(--bg);}
+  ::-webkit-scrollbar{width:10px;}
+  ::-webkit-scrollbar-track{background:var(--bg-2);}
+  ::-webkit-scrollbar-thumb{background:var(--accent);border-radius:5px;}
+
+  /* ===== NAV ===== */
+  nav{
+    position:fixed;top:0;right:0;left:0;z-index:1000;
+    background:rgba(10,22,40,0.85);backdrop-filter:blur(12px);
+    border-bottom:1px solid var(--border);
+    padding:18px 5%;display:flex;justify-content:space-between;align-items:center;
+    transition:padding 0.3s;
+  }
+  nav.scrolled{padding:12px 5%;}
+  .logo{display:flex;align-items:center;gap:12px;text-decoration:none;}
+  .logo-icon{
+    width:42px;height:42px;border-radius:10px;
+    background:var(--gradient);
+    display:flex;align-items:center;justify-content:center;
+    color:var(--bg);font-size:1.3rem;font-weight:900;
+    font-family:'Cairo',sans-serif;
+  }
+  .logo-text{display:flex;flex-direction:column;line-height:1.1;}
+  .logo-text .ar{font-family:'Cairo',sans-serif;font-weight:900;font-size:1.1rem;color:var(--text);}
+  .logo-text .en{font-family:'JetBrains Mono',monospace;font-size:0.7rem;color:var(--accent);letter-spacing:1px;}
+  .nav-links{display:flex;gap:30px;list-style:none;align-items:center;}
+  .nav-links a{
+    color:var(--text-2);text-decoration:none;font-weight:500;
+    transition:color 0.3s;font-size:0.95rem;
+  }
+  .nav-links a:hover{color:var(--accent);}
+  .nav-cta{
+    background:var(--accent);color:var(--bg)!important;
+    padding:10px 22px;border-radius:8px;font-weight:700;
+    transition:all 0.3s;
+  }
+  .nav-cta:hover{background:var(--accent-2);transform:translateY(-2px);color:var(--bg)!important;}
+  .menu-toggle{display:none;background:none;border:none;color:var(--text);font-size:1.5rem;cursor:pointer;}
+  @media(max-width:768px){
+    .nav-links{
+      display:none;position:absolute;top:100%;right:0;left:0;
+      background:var(--bg-2);flex-direction:column;padding:20px;gap:15px;
+      border-bottom:1px solid var(--border);
+    }
+    .nav-links.active{display:flex;}
+    .menu-toggle{display:block;}
+  }
+
+  /* ===== HERO ===== */
+  .hero{
+    min-height:100vh;display:flex;align-items:center;justify-content:center;
+    padding:120px 5% 60px;position:relative;overflow:hidden;
+    background:
+      radial-gradient(circle at 15% 30%,rgba(255,107,53,0.18) 0%,transparent 50%),
+      radial-gradient(circle at 85% 70%,rgba(74,222,128,0.1) 0%,transparent 50%),
+      linear-gradient(135deg,var(--bg) 0%,var(--bg-2) 100%);
+  }
+  .hero::before{
+    content:'';position:absolute;inset:0;
+    background-image:
+      linear-gradient(rgba(255,107,53,0.03) 1px,transparent 1px),
+      linear-gradient(90deg,rgba(255,107,53,0.03) 1px,transparent 1px);
+    background-size:50px 50px;
+    pointer-events:none;
+  }
+  .hero-content{max-width:1100px;margin:0 auto;text-align:center;position:relative;z-index:1;}
+  .hero-badge{
+    display:inline-flex;align-items:center;gap:10px;
+    background:rgba(255,107,53,0.1);border:1px solid var(--accent);
+    color:var(--accent);font-family:'JetBrains Mono',monospace;
+    font-size:0.9rem;padding:8px 20px;border-radius:30px;margin-bottom:25px;
+  }
+  .hero-badge .dot{
+    width:8px;height:8px;background:var(--accent-3);border-radius:50%;
+    animation:pulse 2s infinite;
+  }
+  @keyframes pulse{
+    0%,100%{opacity:1;transform:scale(1);}
+    50%{opacity:0.5;transform:scale(1.3);}
+  }
+  .hero h1{
+    font-family:'Cairo',sans-serif;
+    font-size:clamp(2.5rem,6vw,4.5rem);font-weight:900;
+    line-height:1.1;margin-bottom:20px;
+  }
+  .hero h1 .accent{
+    background:var(--gradient);
+    -webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text;
+  }
+  .hero p.lead{
+    font-size:clamp(1.1rem,2.5vw,1.4rem);color:var(--text-2);
+    max-width:750px;margin:0 auto 40px;font-weight:500;
+  }
+  .hero-cta{display:flex;gap:15px;justify-content:center;flex-wrap:wrap;margin-bottom:60px;}
+  .btn{
+    padding:15px 35px;border-radius:10px;
+    font-family:'Cairo',sans-serif;font-weight:700;font-size:1.05rem;
+    text-decoration:none;cursor:pointer;
+    transition:all 0.3s;border:none;display:inline-flex;align-items:center;gap:10px;
+  }
+  .btn-primary{background:var(--gradient);color:var(--bg);}
+  .btn-primary:hover{transform:translateY(-3px);box-shadow:0 10px 25px rgba(255,107,53,0.4);}
+  .btn-outline{background:transparent;color:var(--text);border:1px solid var(--accent);}
+  .btn-outline:hover{background:var(--accent);color:var(--bg);}
+  .hero-trust{display:flex;gap:40px;justify-content:center;flex-wrap:wrap;}
+  .trust-item{text-align:center;}
+  .trust-num{
+    font-family:'JetBrains Mono',monospace;font-size:2rem;font-weight:700;
+    background:var(--gradient);
+    -webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text;
+  }
+  .trust-label{color:var(--text-2);font-size:0.9rem;margin-top:3px;}
+
+  /* ===== SECTIONS ===== */
+  section{padding:100px 5%;max-width:1200px;margin:0 auto;}
+  .section-header{text-align:center;margin-bottom:60px;}
+  .section-num{
+    font-family:'JetBrains Mono',monospace;color:var(--accent);
+    font-size:0.95rem;display:block;margin-bottom:10px;
+  }
+  .section-title{
+    font-family:'Cairo',sans-serif;
+    font-size:clamp(1.8rem,4vw,2.8rem);font-weight:800;color:var(--text);
+  }
+  .section-title::after{
+    content:'';display:block;width:80px;height:4px;
+    background:var(--gradient);margin:20px auto 0;border-radius:2px;
+  }
+  .section-desc{color:var(--text-2);max-width:700px;margin:20px auto 0;}
+
+  /* ===== ABOUT ===== */
+  .about-grid{display:grid;grid-template-columns:1fr 1fr;gap:60px;align-items:center;}
+  @media(max-width:768px){.about-grid{grid-template-columns:1fr;gap:40px;}}
+  .about-text h3{
+    font-family:'Cairo',sans-serif;font-size:1.8rem;
+    color:var(--text);margin-bottom:20px;
+  }
+  .about-text p{color:var(--text-2);margin-bottom:15px;font-size:1.05rem;}
+  .about-text strong{color:var(--text);}
+  .about-text .accent{color:var(--accent);}
+  .values{display:grid;gap:15px;margin-top:25px;}
+  .value{
+    background:var(--card);border:1px solid var(--border);
+    padding:18px;border-radius:10px;border-right:4px solid var(--accent);
+    display:flex;align-items:center;gap:15px;
+  }
+  .value-icon{
+    width:50px;height:50px;border-radius:10px;
+    background:rgba(255,107,53,0.1);color:var(--accent);
+    display:flex;align-items:center;justify-content:center;font-size:1.3rem;flex-shrink:0;
+  }
+  .value-content h4{color:var(--text);font-family:'Cairo',sans-serif;font-size:1.05rem;margin-bottom:3px;}
+  .value-content p{color:var(--text-2);font-size:0.9rem;margin:0;}
+
+  .about-visual{
+    background:var(--card);border:1px solid var(--border);
+    border-radius:20px;padding:40px;text-align:center;position:relative;
+  }
+  .about-visual::before{
+    content:'';position:absolute;inset:0;border-radius:20px;
+    background:linear-gradient(135deg,rgba(255,107,53,0.1) 0%,transparent 50%);
+    pointer-events:none;
+  }
+  .stat-big{
+    font-family:'JetBrains Mono',monospace;
+    font-size:3.5rem;font-weight:700;
+    background:var(--gradient);
+    -webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text;
+    display:block;line-height:1;
+  }
+  .stat-label{color:var(--text);font-family:'Cairo',sans-serif;font-size:1.1rem;margin-top:8px;}
+  .stat-sub{color:var(--text-2);font-size:0.85rem;margin-top:5px;}
+  .stats-grid{
+    display:grid;grid-template-columns:1fr 1fr;gap:25px;margin-top:30px;
+  }
+
+  /* ===== SERVICES ===== */
+  .services-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(300px,1fr));gap:25px;}
+  .service-card{
+    background:var(--card);border:1px solid var(--border);
+    border-radius:16px;padding:35px 30px;
+    transition:all 0.4s;position:relative;overflow:hidden;
+  }
+  .service-card::before{
+    content:'';position:absolute;top:0;right:0;left:0;height:4px;
+    background:var(--gradient);transform:scaleX(0);transform-origin:right;
+    transition:transform 0.4s;
+  }
+  .service-card:hover{
+    transform:translateY(-8px);border-color:var(--accent);box-shadow:var(--shadow);
+  }
+  .service-card:hover::before{transform:scaleX(1);}
+  .service-icon{
+    width:70px;height:70px;border-radius:16px;
+    background:linear-gradient(135deg,rgba(255,107,53,0.15),rgba(255,182,39,0.1));
+    border:1px solid rgba(255,107,53,0.3);
+    display:flex;align-items:center;justify-content:center;
+    font-size:1.8rem;color:var(--accent);margin-bottom:20px;
+  }
+  .service-card h3{
+    font-family:'Cairo',sans-serif;font-size:1.3rem;
+    color:var(--text);margin-bottom:12px;font-weight:700;
+  }
+  .service-card p{color:var(--text-2);font-size:0.95rem;margin-bottom:15px;}
+  .service-features{list-style:none;}
+  .service-features li{
+    padding-right:25px;position:relative;
+    color:var(--text);font-size:0.88rem;margin-bottom:6px;
+  }
+  .service-features li::before{
+    content:'✓';position:absolute;right:0;color:var(--accent-3);font-weight:700;
+  }
+
+  /* ===== PROJECTS ===== */
+  .projects-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(330px,1fr));gap:25px;}
+  .project-card{
+    background:var(--card);border:1px solid var(--border);
+    border-radius:16px;overflow:hidden;transition:all 0.3s;
+  }
+  .project-card:hover{transform:translateY(-5px);border-color:var(--accent);box-shadow:var(--shadow);}
+  .project-image{
+    height:180px;background:var(--bg-3);position:relative;
+    display:flex;align-items:center;justify-content:center;
+    overflow:hidden;
+  }
+  .project-image::before{
+    content:'';position:absolute;inset:0;
+    background:linear-gradient(135deg,rgba(255,107,53,0.2),rgba(255,182,39,0.1));
+  }
+  .project-image i{
+    font-size:4rem;color:var(--accent);position:relative;z-index:1;
+    text-shadow:0 0 30px rgba(255,107,53,0.5);
+  }
+  .project-tag{
+    position:absolute;top:15px;right:15px;z-index:2;
+    background:var(--accent);color:var(--bg);
+    padding:5px 12px;border-radius:20px;font-size:0.75rem;font-weight:700;
+    font-family:'JetBrains Mono',monospace;
+  }
+  .project-content{padding:25px;}
+  .project-content h3{
+    font-family:'Cairo',sans-serif;font-size:1.25rem;color:var(--text);
+    margin-bottom:8px;font-weight:700;
+  }
+  .project-content .sub{
+    color:var(--accent);font-size:0.85rem;
+    font-family:'JetBrains Mono',monospace;margin-bottom:12px;
+  }
+  .project-content p{color:var(--text-2);font-size:0.9rem;margin-bottom:15px;}
+  .tech-stack{display:flex;flex-wrap:wrap;gap:6px;}
+  .tech-tag{
+    background:var(--bg);color:var(--accent-2);
+    padding:4px 10px;border-radius:15px;font-size:0.75rem;
+    font-family:'JetBrains Mono',monospace;border:1px solid var(--border);
+  }
+
+  /* ===== WHY US ===== */
+  .why-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(280px,1fr));gap:25px;}
+  .why-card{
+    background:var(--card);border:1px solid var(--border);
+    border-radius:14px;padding:30px;
+    transition:all 0.3s;text-align:center;
+  }
+  .why-card:hover{border-color:var(--accent);transform:translateY(-5px);}
+  .why-icon{
+    width:60px;height:60px;border-radius:50%;
+    background:var(--gradient);margin:0 auto 20px;
+    display:flex;align-items:center;justify-content:center;
+    font-size:1.5rem;color:var(--bg);
+  }
+  .why-card h3{
+    font-family:'Cairo',sans-serif;color:var(--text);
+    font-size:1.15rem;margin-bottom:10px;font-weight:700;
+  }
+  .why-card p{color:var(--text-2);font-size:0.9rem;}
+
+  /* ===== PROCESS ===== */
+  .process-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(200px,1fr));gap:20px;}
+  .process-step{
+    background:var(--card);border:1px solid var(--border);
+    border-radius:14px;padding:30px;text-align:center;
+    position:relative;transition:all 0.3s;
+  }
+  .process-step:hover{border-color:var(--accent);transform:translateY(-5px);}
+  .process-num{
+    width:50px;height:50px;border-radius:50%;
+    background:var(--gradient);margin:0 auto 20px;
+    display:flex;align-items:center;justify-content:center;
+    font-family:'JetBrains Mono',monospace;font-size:1.3rem;font-weight:700;color:var(--bg);
+  }
+  .process-step h4{font-family:'Cairo',sans-serif;color:var(--text);font-size:1.1rem;margin-bottom:8px;}
+  .process-step p{color:var(--text-2);font-size:0.88rem;}
+
+  /* ===== PRICING ===== */
+  .pricing-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(280px,1fr));gap:25px;}
+  .pricing-card{
+    background:var(--card);border:1px solid var(--border);
+    border-radius:18px;padding:35px 30px;
+    transition:all 0.3s;position:relative;
+  }
+  .pricing-card.featured{
+    border-color:var(--accent);transform:scale(1.03);
+    background:linear-gradient(135deg,rgba(255,107,53,0.08),var(--card));
+  }
+  .pricing-card:hover{transform:translateY(-8px);}
+  .pricing-card.featured:hover{transform:scale(1.03) translateY(-8px);}
+  .pricing-badge{
+    position:absolute;top:-12px;right:30px;
+    background:var(--gradient);color:var(--bg);
+    padding:5px 15px;border-radius:20px;font-size:0.75rem;font-weight:700;
+    font-family:'Cairo',sans-serif;
+  }
+  .pricing-card h3{
+    font-family:'Cairo',sans-serif;color:var(--text);
+    font-size:1.4rem;margin-bottom:5px;font-weight:700;
+  }
+  .pricing-card .sub{color:var(--accent);font-size:0.85rem;font-family:'JetBrains Mono',monospace;margin-bottom:20px;}
+  .pricing-price{
+    font-family:'JetBrains Mono',monospace;font-size:2.5rem;font-weight:700;
+    color:var(--text);margin-bottom:5px;
+  }
+  .pricing-price .currency{font-size:1rem;color:var(--text-2);}
+  .pricing-period{color:var(--text-2);font-size:0.85rem;margin-bottom:25px;}
+  .pricing-features{list-style:none;margin-bottom:25px;}
+  .pricing-features li{
+    padding:8px 0;border-bottom:1px solid var(--border);
+    color:var(--text);font-size:0.9rem;
+    display:flex;align-items:center;gap:10px;
+  }
+  .pricing-features li i{color:var(--accent-3);}
+  .pricing-features li:last-child{border-bottom:none;}
+  .pricing-btn{
+    display:block;text-align:center;padding:12px;
+    background:var(--card);border:1px solid var(--accent);
+    color:var(--accent);border-radius:10px;text-decoration:none;
+    font-weight:700;font-family:'Cairo',sans-serif;
+    transition:all 0.3s;
+  }
+  .pricing-btn:hover{background:var(--accent);color:var(--bg);}
+
+  /* ===== TESTIMONIALS ===== */
+  .testimonials-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(280px,1fr));gap:25px;}
+  .testimonial{
+    background:var(--card);border:1px solid var(--border);
+    border-radius:14px;padding:30px;position:relative;
+  }
+  .testimonial::before{
+    content:'"';position:absolute;top:-20px;right:20px;
+    font-family:'Cairo',sans-serif;font-size:5rem;color:var(--accent);
+    opacity:0.3;line-height:1;
+  }
+  .testimonial-rating{color:var(--accent-2);margin-bottom:15px;font-size:0.95rem;}
+  .testimonial-text{color:var(--text);font-size:0.95rem;margin-bottom:20px;font-style:italic;}
+  .testimonial-author{display:flex;align-items:center;gap:12px;}
+  .author-avatar{
+    width:45px;height:45px;border-radius:50%;
+    background:var(--gradient);display:flex;align-items:center;justify-content:center;
+    color:var(--bg);font-weight:700;font-family:'Cairo',sans-serif;
+  }
+  .author-info h5{color:var(--text);font-size:0.95rem;}
+  .author-info .role{color:var(--text-2);font-size:0.8rem;}
+
+  /* ===== TEAM ===== */
+  .team-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(280px,1fr));gap:30px;}
+  .team-card{
+    background:var(--card);border:1px solid var(--border);
+    border-radius:18px;padding:35px;text-align:center;transition:all 0.3s;
+  }
+  .team-card:hover{border-color:var(--accent);transform:translateY(-5px);}
+  .team-avatar{
+    width:120px;height:120px;border-radius:50%;margin:0 auto 20px;
+    background:var(--gradient);display:flex;align-items:center;justify-content:center;
+    font-family:'Cairo',sans-serif;font-size:2.5rem;font-weight:900;color:var(--bg);
+  }
+  .team-card h3{font-family:'Cairo',sans-serif;color:var(--text);font-size:1.3rem;margin-bottom:5px;}
+  .team-card .role{color:var(--accent);font-size:0.9rem;font-family:'JetBrains Mono',monospace;margin-bottom:15px;}
+  .team-bio{color:var(--text-2);font-size:0.9rem;margin-bottom:20px;}
+  .team-skills{display:flex;flex-wrap:wrap;gap:6px;justify-content:center;}
+  .skill-pill{
+    background:var(--bg);border:1px solid var(--border);
+    padding:5px 12px;border-radius:20px;font-size:0.75rem;
+    color:var(--accent-2);font-family:'JetBrains Mono',monospace;
+  }
+
+  /* ===== FAQ ===== */
+  .faq-container{max-width:800px;margin:0 auto;}
+  .faq-item{
+    background:var(--card);border:1px solid var(--border);
+    border-radius:12px;margin-bottom:15px;overflow:hidden;
+    transition:border-color 0.3s;
+  }
+  .faq-item:hover{border-color:var(--accent);}
+  .faq-question{
+    padding:20px 25px;cursor:pointer;display:flex;
+    justify-content:space-between;align-items:center;
+    font-family:'Cairo',sans-serif;color:var(--text);
+    font-weight:600;font-size:1.05rem;
+  }
+  .faq-question .icon{
+    color:var(--accent);transition:transform 0.3s;font-size:1.2rem;
+  }
+  .faq-item.active .faq-question .icon{transform:rotate(45deg);}
+  .faq-answer{
+    max-height:0;overflow:hidden;
+    transition:max-height 0.4s ease;
+  }
+  .faq-item.active .faq-answer{max-height:300px;}
+  .faq-answer-content{padding:0 25px 20px;color:var(--text-2);font-size:0.95rem;}
+
+  /* ===== CONTACT ===== */
+  .contact{background:var(--bg-2);border-top:1px solid var(--border);}
+  .contact-grid{display:grid;grid-template-columns:1fr 1fr;gap:50px;}
+  @media(max-width:768px){.contact-grid{grid-template-columns:1fr;}}
+  .contact-info h3{
+    font-family:'Cairo',sans-serif;font-size:1.8rem;
+    color:var(--text);margin-bottom:15px;
+  }
+  .contact-info p{color:var(--text-2);margin-bottom:30px;font-size:1.05rem;}
+  .contact-item{
+    display:flex;align-items:center;gap:15px;
+    margin-bottom:20px;padding:15px;
+    background:var(--card);border:1px solid var(--border);
+    border-radius:10px;transition:all 0.3s;
+  }
+  .contact-item:hover{border-color:var(--accent);transform:translateX(-5px);}
+  .contact-item i{
+    width:50px;height:50px;border-radius:10px;
+    background:rgba(255,107,53,0.1);color:var(--accent);
+    display:flex;align-items:center;justify-content:center;font-size:1.3rem;flex-shrink:0;
+  }
+  .contact-item .label{color:var(--text-2);font-size:0.8rem;font-family:'JetBrains Mono',monospace;}
+  .contact-item .value{color:var(--text);font-weight:600;margin-top:2px;}
+  .contact-form{
+    background:var(--card);border:1px solid var(--border);
+    border-radius:16px;padding:35px;
+  }
+  .form-group{margin-bottom:20px;}
+  .form-group label{
+    display:block;color:var(--text);font-weight:600;
+    margin-bottom:8px;font-size:0.95rem;
+  }
+  .form-group input,.form-group select,.form-group textarea{
+    width:100%;padding:12px 15px;
+    background:var(--bg);border:1px solid var(--border);
+    border-radius:8px;color:var(--text);font-family:'Tajawal',sans-serif;
+    font-size:0.95rem;transition:border-color 0.3s;
+  }
+  .form-group input:focus,.form-group select:focus,.form-group textarea:focus{
+    outline:none;border-color:var(--accent);
+  }
+  .form-group textarea{resize:vertical;min-height:120px;}
+  .form-submit{
+    width:100%;padding:15px;background:var(--gradient);
+    color:var(--bg);border:none;border-radius:10px;
+    font-family:'Cairo',sans-serif;font-weight:700;font-size:1.05rem;
+    cursor:pointer;transition:all 0.3s;
+  }
+  .form-submit:hover{transform:translateY(-2px);box-shadow:0 8px 20px rgba(255,107,53,0.4);}
+
+  /* ===== WHATSAPP FLOAT ===== */
+  .whatsapp-float{
+    position:fixed;bottom:30px;left:30px;z-index:999;
+    width:60px;height:60px;border-radius:50%;
+    background:#25D366;color:white;
+    display:flex;align-items:center;justify-content:center;
+    font-size:1.8rem;text-decoration:none;
+    box-shadow:0 5px 20px rgba(37,211,102,0.5);
+    transition:transform 0.3s;animation:wa-pulse 2s infinite;
+  }
+  .whatsapp-float:hover{transform:scale(1.1);}
+  @keyframes wa-pulse{
+    0%,100%{box-shadow:0 5px 20px rgba(37,211,102,0.5);}
+    50%{box-shadow:0 5px 30px rgba(37,211,102,0.8);}
+  }
+
+  /* ===== FOOTER ===== */
+  footer{
+    background:var(--bg);padding:60px 5% 30px;
+    border-top:1px solid var(--border);
+  }
+  .footer-grid{
+    max-width:1200px;margin:0 auto;
+    display:grid;grid-template-columns:2fr 1fr 1fr 1fr;gap:40px;
+    padding-bottom:40px;border-bottom:1px solid var(--border);
+  }
+  @media(max-width:768px){.footer-grid{grid-template-columns:1fr 1fr;}}
+  .footer-brand p{color:var(--text-2);font-size:0.9rem;margin-top:15px;max-width:300px;}
+  .footer-col h4{
+    font-family:'Cairo',sans-serif;color:var(--text);
+    font-size:1.05rem;margin-bottom:15px;
+  }
+  .footer-col ul{list-style:none;}
+  .footer-col ul li{margin-bottom:10px;}
+  .footer-col ul a{
+    color:var(--text-2);text-decoration:none;font-size:0.9rem;
+    transition:color 0.3s;
+  }
+  .footer-col ul a:hover{color:var(--accent);}
+  .footer-bottom{
+    max-width:1200px;margin:0 auto;padding-top:25px;
+    text-align:center;color:var(--text-2);font-size:0.85rem;
+  }
+  .footer-bottom .heart{color:var(--accent);}
+  .social-links{display:flex;gap:15px;margin-top:15px;}
+  .social-links a{
+    width:38px;height:38px;border-radius:8px;
+    background:var(--card);border:1px solid var(--border);
+    display:flex;align-items:center;justify-content:center;
+    color:var(--text-2);text-decoration:none;
+    transition:all 0.3s;
+  }
+  .social-links a:hover{background:var(--accent);color:var(--bg);border-color:var(--accent);}
+
+  /* animations */
+  @keyframes fadeInUp{
+    from{opacity:0;transform:translateY(30px);}
+    to{opacity:1;transform:translateY(0);}
+  }
+  .fade-in{animation:fadeInUp 0.8s ease forwards;}
+  .delay-1{animation-delay:0.2s;opacity:0;}
+  .delay-2{animation-delay:0.4s;opacity:0;}
+  .delay-3{animation-delay:0.6s;opacity:0;}
+  .delay-4{animation-delay:0.8s;opacity:0;}
+
+  @media print{
+    nav,.whatsapp-float{display:none;}
+    body{background:white;color:black;}
+    section{padding:30px 0;}
+  }
+</style>
+</head>
+<body>
+
+<!-- ============ NAV ============ -->
+<nav id="navbar">
+  <a href="#" class="logo">
+    <div class="logo-icon">S</div>
+    <div class="logo-text">
+      <span class="ar">سمارت بيلد</span>
+      <span class="en">SMARTBUILD.PS</span>
+    </div>
+  </a>
+  <ul class="nav-links" id="navLinks">
+    <li><a href="#about">من نحن</a></li>
+    <li><a href="#services">خدماتنا</a></li>
+    <li><a href="#projects">مشاريعنا</a></li>
+    <li><a href="#why">لماذا نحن</a></li>
+    <li><a href="#pricing">الباقات</a></li>
+    <li><a href="#contact" class="nav-cta">اطلب عرض سعر</a></li>
+  </ul>
+  <button class="menu-toggle" id="menuToggle"><i class="fas fa-bars"></i></button>
+</nav>
+
+<!-- ============ HERO ============ -->
+<section class="hero">
+  <div class="hero-content">
+    <div class="hero-badge fade-in">
+      <span class="dot"></span>
+      <span>متاحون لمشاريع جديدة في جنوب الضفة</span>
+    </div>
+    <h1 class="fade-in delay-1">
+      أنظمة المباني الذكية <br>
+      <span class="accent">بأيدي فلسطينية محترفة</span>
+    </h1>
+    <p class="lead fade-in delay-2">
+      نوفر حلول أمان ذكية متكاملة للمنازل والمنشآت: إنذار حريق + إنذار سرقة + كاميرات مراقبة + أتمتة منزلية + طاقة شمسية + تحكم عن بُعد عبر الهاتف.
+    </p>
+    <div class="hero-cta fade-in delay-3">
+      <a href="#contact" class="btn btn-primary"><i class="fas fa-calculator"></i> اطلب عرض سعر مجاني</a>
+      <a href="#projects" class="btn btn-outline"><i class="fas fa-eye"></i> شاهد أعمالنا</a>
+    </div>
+    <div class="hero-trust fade-in delay-4">
+      <div class="trust-item">
+        <div class="trust-num">7+</div>
+        <div class="trust-label">مشاريع منجزة</div>
+      </div>
+      <div class="trust-item">
+        <div class="trust-num">100%</div>
+        <div class="trust-label">رضا العملاء</div>
+      </div>
+      <div class="trust-item">
+        <div class="trust-num">24/7</div>
+        <div class="trust-label">دعم فني</div>
+      </div>
+      <div class="trust-item">
+        <div class="trust-num">3</div>
+        <div class="trust-label">معايير دولية</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ ABOUT ============ -->
+<section id="about">
+  <div class="section-header">
+    <span class="section-num">01. من نحن</span>
+    <h2 class="section-title">قصة بدأت من "أول لبنة"</h2>
+  </div>
+  <div class="about-grid">
+    <div class="about-text">
+      <h3>نحن لسنا مجرد شركة — نحن <span class="accent">شركاؤك في الأمان</span></h3>
+      <p>
+        <strong>SmartBuild Palestine</strong> شركة فلسطينية ناشئة من دورا - جنوب الخليل، متخصصة في تصميم وتركيب أنظمة المباني الذكية والأتمتة. تأسست على يد المهندس <strong>محمد عادل العقيلي</strong> — خريج تكنولوجيا المباني الذكية بمعدل عملي 99%.
+      </p>
+      <p>
+        نفّذنا <strong>7 مشاريع تقنية متكاملة</strong> قبل تأسيس الشركة الرسمي، شملت أنظمة أمان + أتمتة + IoT + طاقة شمسية. مشروعنا الرئيسي وصفته لجنة وزارية بأنه "مشروع جامعة، 6 مشاريع ببعض".
+      </p>
+      <div class="values">
+        <div class="value">
+          <div class="value-icon"><i class="fas fa-shield-halved"></i></div>
+          <div class="value-content">
+            <h4>الأمان أولاً</h4>
+            <p>نطبق معايير NFPA 101 + IEC + ISO 27001 في كل مشروع</p>
+          </div>
+        </div>
+        <div class="value">
+          <div class="value-icon"><i class="fas fa-microchip"></i></div>
+          <div class="value-content">
+            <h4>تقنيات حديثة</h4>
+            <p>Arduino · ESP · Firebase · IoT · KNX · PLC</p>
+          </div>
+        </div>
+        <div class="value">
+          <div class="value-icon"><i class="fas fa-handshake"></i></div>
+          <div class="value-content">
+            <h4>أسعار عادلة</h4>
+            <p>تنافسية + شفافة + بدون رسوم خفية</p>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="about-visual">
+      <div class="stat-big">99%</div>
+      <div class="stat-label">معدل الإتقان العملي</div>
+      <div class="stat-sub">في تركيب وبرمجة الأنظمة</div>
+      <div class="stats-grid">
+        <div>
+          <div class="stat-big">7+</div>
+          <div class="stat-label">مشاريع</div>
+        </div>
+        <div>
+          <div class="stat-big">300ms</div>
+          <div class="stat-label">سرعة الاستجابة</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ SERVICES ============ -->
+<section id="services">
+  <div class="section-header">
+    <span class="section-num">02. خدماتنا</span>
+    <h2 class="section-title">حلول متكاملة لكل احتياج</h2>
+    <p class="section-desc">6 خدمات رئيسية تغطي كل جوانب الأمان والأتمتة والطاقة في مبناك</p>
+  </div>
+  <div class="services-grid">
+
+    <div class="service-card">
+      <div class="service-icon"><i class="fas fa-fire-extinguisher"></i></div>
+      <h3>أنظمة إنذار الحريق</h3>
+      <p>كشف مبكر للحرائق + إنذار فوري + فتح آلي للأبواب للإخلاء (متوافق مع NFPA 101).</p>
+      <ul class="service-features">
+        <li>حساسات لهب + دخان + حرارة</li>
+        <li>إنذار صوتي وبصري</li>
+        <li>فتح أبواب الطوارئ تلقائياً</li>
+        <li>إشعار فوري للهاتف</li>
+      </ul>
+    </div>
+
+    <div class="service-card">
+      <div class="service-icon"><i class="fas fa-bell"></i></div>
+      <h3>أنظمة إنذار السرقة</h3>
+      <p>كشف الاقتحام + إنذار + إغلاق آلي للأبواب (متوافق مع ISO 27001).</p>
+      <ul class="service-features">
+        <li>حساسات حركة PIR + اهتزاز</li>
+        <li>كاميرات مراقبة + تسجيل</li>
+        <li>إغلاق آلي للأبواب</li>
+        <li>تنبيهات أمنية للهاتف</li>
+      </ul>
+    </div>
+
+    <div class="service-card">
+      <div class="service-icon"><i class="fas fa-video"></i></div>
+      <h3>كاميرات المراقبة + NVR</h3>
+      <p>أنظمة مراقبة احترافية داخلية وخارجية مع تسجيل 24/7 + وصول عن بُعد.</p>
+      <ul class="service-features">
+        <li>كاميرات HD/4K داخلية وخارجية</li>
+        <li>NVR/DVR بسعات تخزين مختلفة</li>
+        <li>مشاهدة مباشرة من الهاتف</li>
+        <li>تنبيهات ذكية بالحركة</li>
+      </ul>
+    </div>
+
+    <div class="service-card">
+      <div class="service-icon"><i class="fas fa-house-laptop"></i></div>
+      <h3>الأتمتة المنزلية الذكية</h3>
+      <p>تحكم كامل بالمنزل من هاتفك: إنارة + تكييف + أبواب + سيناريوهات مخصصة.</p>
+      <ul class="service-features">
+        <li>تحكم بالإضاءة عن بُعد</li>
+        <li>أبواب ذكية بكلمة مرور</li>
+        <li>سيناريوهات قابلة للبرمجة</li>
+        <li>ربط مع Firebase + تطبيق موبايل</li>
+      </ul>
+    </div>
+
+    <div class="service-card">
+      <div class="service-icon"><i class="fas fa-solar-panel"></i></div>
+      <h3>الطاقة الشمسية + الأتمتة</h3>
+      <p>حلول فريدة تجمع بين الطاقة المتجددة وأنظمة الأتمتة — فجوة ذهبية في السوق الفلسطيني.</p>
+      <ul class="service-features">
+        <li>أنظمة شمسية بأحجام مختلفة</li>
+        <li>بطاريات ليثيوم احتياطية</li>
+        <li>أتمتة تعمل بالطاقة الشمسية</li>
+        <li>مراقبة الإنتاج عن بُعد</li>
+      </ul>
+    </div>
+
+    <div class="service-card">
+      <div class="service-icon"><i class="fas fa-headset"></i></div>
+      <h3>الصيانة والدعم الفني</h3>
+      <p>عقود صيانة دورية + دعم فني 24/7 + إصلاح أعطال الأنظمة القديمة.</p>
+      <ul class="service-features">
+        <li>صيانة دورية شهرية/ربعية</li>
+        <li>دعم فني عبر الهاتف</li>
+        <li>إصلاح أعطال الأنظمة القديمة</li>
+        <li>ترقية الأنظمة الحالية</li>
+      </ul>
+    </div>
+
+  </div>
+</section>
+
+<!-- ============ PROJECTS ============ -->
+<section id="projects">
+  <div class="section-header">
+    <span class="section-num">03. معرض الأعمال</span>
+    <h2 class="section-title">مشاريع نفخر بها</h2>
+    <p class="section-desc">مجموعة من أبرز المشاريع التي نفذناها — كل مشروع بمعايير احترافية عالمية</p>
+  </div>
+  <div class="projects-grid">
+
+    <div class="project-card">
+      <div class="project-image">
+        <span class="project-tag">مشروع مميز</span>
+        <i class="fas fa-building"></i>
+      </div>
+      <div class="project-content">
+        <h3>نظام إدارة المباني الذكية (SBMS)</h3>
+        <div class="sub">Smart Building Management System</div>
+        <p>نظام متكامل يدمج 6 أنظمة: حريق + أمان + إضاءة + باب + بيئة + IoT. وصفته لجنة الوزارية بـ "مشروع جامعة".</p>
+        <div class="tech-stack">
+          <span class="tech-tag">Arduino Mega</span>
+          <span class="tech-tag">ESP8266</span>
+          <span class="tech-tag">Firebase</span>
+          <span class="tech-tag">Solar</span>
+        </div>
+      </div>
+    </div>
+
+    <div class="project-card">
+      <div class="project-image">
+        <span class="project-tag">منفذ</span>
+        <i class="fas fa-warehouse"></i>
+      </div>
+      <div class="project-content">
+        <h3>نظام الكراج الذكي</h3>
+        <div class="sub">Smart Garage System v2.0</div>
+        <p>نظام متكامل لإدارة كراج سيارات بـ 3 بوابات + 5 حساسات + 5 حالات نظام (SAFE/FIRE/GAS/FULL/HOT).</p>
+        <div class="tech-stack">
+          <span class="tech-tag">Arduino Mega</span>
+          <span class="tech-tag">Firebase</span>
+          <span class="tech-tag">JSON Batch</span>
+        </div>
+      </div>
+    </div>
+
+    <div class="project-card">
+      <div class="project-image">
+        <span class="project-tag">منفذ</span>
+        <i class="fas fa-music"></i>
+      </div>
+      <div class="project-content">
+        <h3>قاعة الأعراس الذكية</h3>
+        <div class="sub">Wedding Hall v18.5</div>
+        <p>أتمتة قاعة أعراس بـ 2 بوابات + مشغل MP3 + تحكم تلقائي بالحضور. استجابة محلية فورية.</p>
+        <div class="tech-stack">
+          <span class="tech-tag">ESP32</span>
+          <span class="tech-tag">DFPlayer</span>
+          <span class="tech-tag">Firebase</span>
+        </div>
+      </div>
+    </div>
+
+    <div class="project-card">
+      <div class="project-image">
+        <span class="project-tag">منفذ</span>
+        <i class="fas fa-lock"></i>
+      </div>
+      <div class="project-content">
+        <h3>الخزنة الذكية المضادة للتجمد</h3>
+        <div class="sub">Smart Safe v7.3 Anti-Freeze</div>
+        <p>خزنة بـ RFID + تطبيق موبايل + ميزة Anti-Freeze تمنع تجمد النظام عند انقطاع الإنترنت.</p>
+        <div class="tech-stack">
+          <span class="tech-tag">ESP32</span>
+          <span class="tech-tag">RFID MFRC522</span>
+          <span class="tech-tag">NVS</span>
+        </div>
+      </div>
+    </div>
+
+    <div class="project-card">
+      <div class="project-image">
+        <span class="project-tag">منفذ</span>
+        <i class="fas fa-tractor"></i>
+      </div>
+      <div class="project-content">
+        <h3>مزرعة الدجاج الذكية</h3>
+        <div class="sub">Smart Farm v23.0</div>
+        <p>نظام مزرعة ذكي بـ 4 حساسات + 3 مخرجات. إدارة حرارة + رطوبة تربة + إنذار علف.</p>
+        <div class="tech-stack">
+          <span class="tech-tag">Arduino Uno</span>
+          <span class="tech-tag">DHT11</span>
+          <span class="tech-tag">Soil Sensor</span>
+        </div>
+      </div>
+    </div>
+
+    <div class="project-card">
+      <div class="project-image">
+        <span class="project-tag">منفذ</span>
+        <i class="fas fa-elevator"></i>
+      </div>
+      <div class="project-content">
+        <h3>مصعد السيارات الذكي</h3>
+        <div class="sub">Smart Car Lift</div>
+        <p>مصعد 6 طوابق + كشف حضور + فتح/إغلاق تلقائي + تحكم كييباد. فلترة لمنع اهتزاز السيرفو.</p>
+        <div class="tech-stack">
+          <span class="tech-tag">ESP8266</span>
+          <span class="tech-tag">Ultrasonic</span>
+          <span class="tech-tag">Keypad</span>
+        </div>
+      </div>
+    </div>
+
+  </div>
+</section>
+
+<!-- ============ WHY US ============ -->
+<section id="why">
+  <div class="section-header">
+    <span class="section-num">04. لماذا نحن</span>
+    <h2 class="section-title">ما يميزنا عن غيرنا</h2>
+  </div>
+  <div class="why-grid">
+    <div class="why-card">
+      <div class="why-icon"><i class="fas fa-map-marker-alt"></i></div>
+      <h3>أول شركة في جنوب الخليل</h3>
+      <p>سوق جنوب الضبة خالٍ من الشركات المتخصصة بالأتمتة — نحن الأولون.</p>
+    </div>
+    <div class="why-card">
+      <div class="why-icon"><i class="fas fa-certificate"></i></div>
+      <h3>معايير دولية</h3>
+      <p>نطبق NFPA 101 + IEC 60364 + ISO 27001 في كل مشروع.</p>
+    </div>
+    <div class="why-card">
+      <div class="why-icon"><i class="fas fa-bolt"></i></div>
+      <h3>استجابة فورية</h3>
+      <p>زمن استجابة الحريق < 300ms — أسرع من المعايير العالمية.</p>
+    </div>
+    <div class="why-card">
+      <div class="why-icon"><i class="fas fa-mobile-screen"></i></div>
+      <h3>تحكم عن بُعد</h3>
+      <p>تطبيق موبايل + Firebase لمزامنة لحظية + تحكم كامل من أي مكان.</p>
+    </div>
+    <div class="why-card">
+      <div class="why-icon"><i class="fas fa-solar-panel"></i></div>
+      <h3>طاقة احتياطية</h3>
+      <p>أنظمة تعمل بالطاقة الشمسية + بطاريات ليثيوم — 20+ ساعة عمل.</p>
+    </div>
+    <div class="why-card">
+      <div class="why-icon"><i class="fas fa-tags"></i></div>
+      <h3>أسعار تنافسية</h3>
+      <p>حلول مخصصة لميزانيتك — من المشاريع الصغيرة للأنظمة المتكاملة.</p>
+    </div>
+  </div>
+</section>
+
+<!-- ============ PROCESS ============ -->
+<section id="process">
+  <div class="section-header">
+    <span class="section-num">05. آلية العمل</span>
+    <h2 class="section-title">كيف نعمل؟</h2>
+    <p class="section-desc">5 خطوات واضحة من أول تواصل حتى ما بعد التسليم</p>
+  </div>
+  <div class="process-grid">
+    <div class="process-step">
+      <div class="process-num">1</div>
+      <h4>استشارة مجانية</h4>
+      <p>نزور موقعك + نستمع لاحتياجك + نقيّم المتطلبات.</p>
+    </div>
+    <div class="process-step">
+      <div class="process-num">2</div>
+      <h4>عرض سعر مفصل</h4>
+      <p>نقدم عرضاً شفافاً بالتكلفة + القطع + المدة.</p>
+    </div>
+    <div class="process-step">
+      <div class="process-num">3</div>
+      <h4>التصميم والبرمجة</h4>
+      <p>نصمم النظام + نبرمج الكود + نجهز المجسم.</p>
+    </div>
+    <div class="process-step">
+      <div class="process-num">4</div>
+      <h4>التركيب والاختبار</h4>
+      <p>نركب النظام في موقعك + نختبره أمامك.</p>
+    </div>
+    <div class="process-step">
+      <div class="process-num">5</div>
+      <h4>التسليم والدعم</h4>
+      <p>نسلمك التطبيق + ندربك + دعم فني 24/7.</p>
+    </div>
+  </div>
+</section>
+
+<!-- ============ PRICING ============ -->
+<section id="pricing">
+  <div class="section-header">
+    <span class="section-num">06. الباقات</span>
+    <h2 class="section-title">باقات تناسب الجميع</h2>
+    <p class="section-desc">اختر الباقة المناسبة لك — أو اطلب باقة مخصصة</p>
+  </div>
+  <div class="pricing-grid">
+
+    <div class="pricing-card">
+      <h3>الباقة الأساسية</h3>
+      <div class="sub">BASIC</div>
+      <div class="pricing-price">750<span class="currency">₪</span></div>
+      <div class="pricing-period">يبدأ من</div>
+      <ul class="pricing-features">
+        <li><i class="fas fa-check"></i> كاميرا مراقبة واحدة</li>
+        <li><i class="fas fa-check"></i> حساس حركة واحد</li>
+        <li><i class="fas fa-check"></i> إنذار صوتي</li>
+        <li><i class="fas fa-check"></i> تطبيق موبايل أساسي</li>
+        <li><i class="fas fa-check"></i> ضمان 6 أشهر</li>
+      </ul>
+      <a href="#contact" class="pricing-btn">اطلب الآن</a>
+    </div>
+
+    <div class="pricing-card featured">
+      <span class="pricing-badge">الأكثر طلباً</span>
+      <h3>الباقة المتكاملة</h3>
+      <div class="sub">PROFESSIONAL</div>
+      <div class="pricing-price">2,500<span class="currency">₪</span></div>
+      <div class="pricing-period">يبدأ من</div>
+      <ul class="pricing-features">
+        <li><i class="fas fa-check"></i> 4 كاميرات + NVR</li>
+        <li><i class="fas fa-check"></i> إنذار حريق كامل</li>
+        <li><i class="fas fa-check"></i> إنذار سرقة كامل</li>
+        <li><i class="fas fa-check"></i> تحكم بالإضاءة عن بُعد</li>
+        <li><i class="fas fa-check"></i> تطبيق موبايل احترافي</li>
+        <li><i class="fas fa-check"></i> ضمان سنة كاملة</li>
+        <li><i class="fas fa-check"></i> صيانة دورية 4 مرات</li>
+      </ul>
+      <a href="#contact" class="pricing-btn">اطلب الآن</a>
+    </div>
+
+    <div class="pricing-card">
+      <h3>الباقة المخصصة</h3>
+      <div class="sub">ENTERPRISE</div>
+      <div class="pricing-price">عرض</div>
+      <div class="pricing-period">حسب الطلب</div>
+      <ul class="pricing-features">
+        <li><i class="fas fa-check"></i> نظام BMS متكامل</li>
+        <li><i class="fas fa-check"></i> أنظمة KNX احترافية</li>
+        <li><i class="fas fa-check"></i> طاقة شمسية + أتمتة</li>
+        <li><i class="fas fa-check"></i> تطبيق مخصص بالكامل</li>
+        <li><i class="fas fa-check"></i> ضمان سنتان</li>
+        <li><i class="fas fa-check"></i> دعم فني 24/7</li>
+        <li><i class="fas fa-check"></i> صيانة شهرية</li>
+      </ul>
+      <a href="#contact" class="pricing-btn">اطلب عرض سعر</a>
+    </div>
+
+  </div>
+</section>
+
+<!-- ============ TESTIMONIALS ============ -->
+<section id="testimonials">
+  <div class="section-header">
+    <span class="section-num">07. آراء العملاء</span>
+    <h2 class="section-title">ماذا قالوا عنا</h2>
+  </div>
+  <div class="testimonials-grid">
+
+    <div class="testimonial">
+      <div class="testimonial-rating">★★★★★</div>
+      <div class="testimonial-text">"مشروع محمد مش مشروع توجيهي، هذا مشروع جامعة، وكأنه 6 مشاريع مع بعض." — اللجنة الوزارية</div>
+      <div class="testimonial-author">
+        <div class="author-avatar">ل</div>
+        <div class="author-info">
+          <h5>لجنة التقييم الوزارية</h5>
+          <div class="role">تقييم مشروع التخرج</div>
+        </div>
+      </div>
+    </div>
+
+    <div class="testimonial">
+      <div class="testimonial-rating">★★★★★</div>
+      <div class="testimonial-text">"أنجز لي محمد مشروع صالة الأعراس باحترافية عالية. النظام يعمل بكفاءة والاستجابة فورية."</div>
+      <div class="testimonial-author">
+        <div class="author-avatar">ي</div>
+        <div class="author-info">
+          <h5>يحيى</h5>
+          <div class="role">صاحب قاعة أعراس</div>
+        </div>
+      </div>
+    </div>
+
+    <div class="testimonial">
+      <div class="testimonial-rating">★★★★★</div>
+      <div class="testimonial-text">"مشروع الكراج الذكي الذي نفذه محمد كان حلاً متكاملاً لمشكلتي. نظام آمن + تحكم كامل من الهاتف."</div>
+      <div class="testimonial-author">
+        <div class="author-avatar">ع</div>
+        <div class="author-info">
+          <h5>عمار</h5>
+          <div class="role">صاحب كراج سيارات</div>
+        </div>
+      </div>
+    </div>
+
+  </div>
+</section>
+
+<!-- ============ TEAM ============ -->
+<section id="team">
+  <div class="section-header">
+    <span class="section-num">08. فريقنا</span>
+    <h2 class="section-title">من يقف خلف الشركة</h2>
+  </div>
+  <div class="team-grid">
+
+    <div class="team-card">
+      <div class="team-avatar">م</div>
+      <h3>محمد عادل العقيلي</h3>
+      <div class="role">المؤسس · المهندس التقني</div>
+      <p class="team-bio">
+        خريج تكنولوجيا المباني الذكية بمعدل عملي 99%. نفذ 7 مشاريع تقنية متكاملة. مشروع تخرجه وصفته لجنة الوزارية بـ "مشروع جامعة".
+      </p>
+      <div class="team-skills">
+        <span class="skill-pill">Arduino</span>
+        <span class="skill-pill">ESP32/8266</span>
+        <span class="skill-pill">Firebase</span>
+        <span class="skill-pill">IoT</span>
+        <span class="skill-pill">Solar</span>
+        <span class="skill-pill">Soldering</span>
+      </div>
+    </div>
+
+    <div class="team-card">
+      <div class="team-avatar">ع</div>
+      <h3>عمار (شريك مستقبلي)</h3>
+      <div class="role">مسؤول الأنظمة الميدانية</div>
+      <p class="team-bio">
+        طالب نفس التخصص — درجات عملية جيدة + خبرة في Arduino. مسؤول عن تركيب الأنظمة + الصيانة الميدانية.
+      </p>
+      <div class="team-skills">
+        <span class="skill-pill">Arduino</span>
+        <span class="skill-pill">Installation</span>
+        <span class="skill-pill">Maintenance</span>
+      </div>
+    </div>
+
+  </div>
+</section>
+
+<!-- ============ FAQ ============ -->
+<section id="faq">
+  <div class="section-header">
+    <span class="section-num">09. الأسئلة الشائعة</span>
+    <h2 class="section-title">أسئلة يطرحها العملاء</h2>
+  </div>
+  <div class="faq-container">
+
+    <div class="faq-item">
+      <div class="faq-question">
+        <span>هل يمكنني التحكم بالنظام من خارج المنزل؟</span>
+        <i class="fas fa-plus icon"></i>
+      </div>
+      <div class="faq-answer">
+        <div class="faq-answer-content">
+          نعم، جميع أنظمتنا مربوطة بـ Firebase وتأتي مع تطبيق موبايل يمكنك من التحكم والمراقبة من أي مكان في العالم عبر الإنترنت.
+        </div>
+      </div>
+    </div>
+
+    <div class="faq-item">
+      <div class="faq-question">
+        <span>ماذا يحدث عند انقطاع الكهرباء أو الإنترنت؟</span>
+        <i class="fas fa-plus icon"></i>
+      </div>
+      <div class="faq-answer">
+        <div class="faq-answer-content">
+          أنظمتنا تعمل محلياً 100% عند انقطاع الإنترنت. وعند انقطاع الكهرباء، البطارية الاحتياطية توفر حتى 20 ساعة عمل متواصل.
+        </div>
+      </div>
+    </div>
+
+    <div class="faq-item">
+      <div class="faq-question">
+        <span>هل تقدمون ضمان على الأنظمة؟</span>
+        <i class="fas fa-plus icon"></i>
+      </div>
+      <div class="faq-answer">
+        <div class="faq-answer-content">
+          نعم، جميع باقاتنا تشمل ضمان من 6 أشهر إلى سنتين حسب الباقة. كما نقدم عقود صيانة دورية لما بعد فترة الضمان.
+        </div>
+      </div>
+    </div>
+
+    <div class="faq-item">
+      <div class="faq-question">
+        <span>كم تستغرق مدة التنفيذ؟</span>
+        <i class="fas fa-plus icon"></i>
+      </div>
+      <div class="faq-answer">
+        <div class="faq-answer-content">
+          تختلف حسب حجم المشروع: المشاريع الصغيرة (1-3 أيام)، المتوسطة (أسبوع)، الكبيرة (2-4 أسابيع). نحدد المدة الدقيقة في عرض السعر.
+        </div>
+      </div>
+    </div>
+
+    <div class="faq-item">
+      <div class="faq-question">
+        <span>ما هي مناطق تغطيتكم؟</span>
+        <i class="fas fa-plus icon"></i>
+      </div>
+      <div class="faq-answer">
+        <div class="faq-answer-content">
+          نغطي حالياً جنوب الضفة (دورا، الخليل، بيت لحم). للمشاريع الكبيرة في مناطق أخرى، يرجى التواصل لمناقشة التفاصيل.
+        </div>
+      </div>
+    </div>
+
+  </div>
+</section>
+
+<!-- ============ CONTACT ============ -->
+<section id="contact" class="contact">
+  <div class="section-header">
+    <span class="section-num">10. تواصل معنا</span>
+    <h2 class="section-title">جاهز تبدأ مشروعك؟</h2>
+    <p class="section-desc">املأ النموذج أو تواصل معنا مباشرة — استشارة أولى مجانية</p>
+  </div>
+  <div class="contact-grid">
+
+    <div class="contact-info">
+      <h3>لنحوّل فكرتك إلى نظام ذكي</h3>
+      <p>سواء كان مشروعك صغيراً (كاميرا واحدة) أو كبيراً (نظام BMS متكامل) — نحن هنا لمساعدتك.</p>
+
+      <div class="contact-item">
+        <i class="fas fa-map-marker-alt"></i>
+        <div>
+          <div class="label">العنوان</div>
+          <div class="value">دورا · جنوب الخليل · فلسطين</div>
+        </div>
+      </div>
+
+      <div class="contact-item">
+        <i class="fas fa-clock"></i>
+        <div>
+          <div class="label">ساعات العمل</div>
+          <div class="value">السبت - الخميس · 9 ص - 7 م</div>
+        </div>
+      </div>
+
+      <div class="contact-item">
+        <i class="fas fa-envelope"></i>
+        <div>
+          <div class="label">البريد الإلكتروني</div>
+          <div class="value">info@smartbuild.ps</div>
+        </div>
+      </div>
+
+      <div class="contact-item">
+        <i class="fab fa-whatsapp"></i>
+        <div>
+          <div class="label">واتساب</div>
+          <div class="value">+970 5XX XXX XXX</div>
+        </div>
+      </div>
+    </div>
+
+    <form class="contact-form" id="contactForm" action="https://formsubmit.co/your-email@example.com" method="POST">
+      <input type="hidden" name="_subject" value="طلب جديد من موقع SmartBuild Palestine">
+      <input type="hidden" name="_template" value="table">
+      <input type="hidden" name="_captcha" value="false">
+
+      <div class="form-group">
+        <label for="name">الاسم الكامل</label>
+        <input type="text" id="name" name="name" required placeholder="اكتب اسمك">
+      </div>
+
+      <div class="form-group">
+        <label for="phone">رقم الهاتف</label>
+        <input type="tel" id="phone" name="phone" required placeholder="05XXXXXXXX">
+      </div>
+
+      <div class="form-group">
+        <label for="service">الخدمة المطلوبة</label>
+        <select id="service" name="service" required>
+          <option value="">اختر الخدمة</option>
+          <option value="fire">إنذار حريق</option>
+          <option value="theft">إنذار سرقة</option>
+          <option value="cameras">كاميرات مراقبة</option>
+          <option value="automation">أتمتة منزلية</option>
+          <option value="solar">طاقة شمسية + أتمتة</option>
+          <option value="maintenance">صيانة + دعم</option>
+          <option value="other">أخرى</option>
+        </select>
+      </div>
+
+      <div class="form-group">
+        <label for="message">تفاصيل المشروع</label>
+        <textarea id="message" name="message" required placeholder="اكتب تفاصيل المشروع: نوع المبنى، الخدمات المطلوبة، الميزانية التقريبية..."></textarea>
+      </div>
+
+      <button type="submit" class="form-submit">
+        <i class="fas fa-paper-plane"></i> أرسل الطلب
+      </button>
+    </form>
+
+  </div>
+</section>
+
+<!-- ============ FOOTER ============ -->
+<footer>
+  <div class="footer-grid">
+    <div class="footer-brand">
+      <a href="#" class="logo">
+        <div class="logo-icon">S</div>
+        <div class="logo-text">
+          <span class="ar">سمارت بيلد</span>
+          <span class="en">SMARTBUILD.PS</span>
+        </div>
+      </a>
+      <p>شركة فلسطينية متخصصة في أنظمة المباني الذكية والأتمتة. أول شركة في جنوب الخليل تدمج الأمان + الأتمتة + الطاقة الشمسية.</p>
+      <div class="social-links">
+        <a href="#" aria-label="Facebook"><i class="fab fa-facebook-f"></i></a>
+        <a href="#" aria-label="Instagram"><i class="fab fa-instagram"></i></a>
+        <a href="#" aria-label="WhatsApp"><i class="fab fa-whatsapp"></i></a>
+        <a href="#" aria-label="LinkedIn"><i class="fab fa-linkedin-in"></i></a>
+      </div>
+    </div>
+
+    <div class="footer-col">
+      <h4>روابط سريعة</h4>
+      <ul>
+        <li><a href="#about">من نحن</a></li>
+        <li><a href="#services">خدماتنا</a></li>
+        <li><a href="#projects">مشاريعنا</a></li>
+        <li><a href="#pricing">الباقات</a></li>
+      </ul>
+    </div>
+
+    <div class="footer-col">
+      <h4>خدماتنا</h4>
+      <ul>
+        <li><a href="#services">إنذار حريق</a></li>
+        <li><a href="#services">إنذار سرقة</a></li>
+        <li><a href="#services">كاميرات مراقبة</a></li>
+        <li><a href="#services">طاقة شمسية</a></li>
+      </ul>
+    </div>
+
+    <div class="footer-col">
+      <h4>تواصل</h4>
+      <ul>
+        <li><a href="#contact">اطلب عرض سعر</a></li>
+        <li><a href="tel:+970">اتصل بنا</a></li>
+        <li><a href="#">واتساب</a></li>
+        <li><a href="#">البريد الإلكتروني</a></li>
+      </ul>
+    </div>
+  </div>
+  <div class="footer-bottom">
+    <p>© 2026 SmartBuild Palestine · صُمم بـ <span class="heart">♥</span> في دورا · فلسطين</p>
+    <p style="margin-top:8px;font-size:0.8rem;opacity:0.7;">"أول لبنة" أغسطس 2025 — وها نحن نبني المستقبل</p>
+  </div>
+</footer>
+
+<!-- ============ WHATSAPP FLOAT ============ -->
+<a href="https://wa.me/9705XXXXXXXX" class="whatsapp-float" target="_blank" aria-label="WhatsApp">
+  <i class="fab fa-whatsapp"></i>
+</a>
+
+<script>
+  // Mobile menu
+  const menuToggle = document.getElementById('menuToggle');
+  const navLinks = document.getElementById('navLinks');
+  menuToggle.addEventListener('click', () => {
+    navLinks.classList.toggle('active');
+    const icon = menuToggle.querySelector('i');
+    icon.classList.toggle('fa-bars');
+    icon.classList.toggle('fa-times');
+  });
+
+  // Close menu on link click
+  navLinks.querySelectorAll('a').forEach(link => {
+    link.addEventListener('click', () => {
+      navLinks.classList.remove('active');
+      const icon = menuToggle.querySelector('i');
+      icon.classList.add('fa-bars');
+      icon.classList.remove('fa-times');
+    });
+  });
+
+  // Navbar shrink on scroll
+  const navbar = document.getElementById('navbar');
+  window.addEventListener('scroll', () => {
+    if (window.scrollY > 50) navbar.classList.add('scrolled');
+    else navbar.classList.remove('scrolled');
+  });
+
+  // FAQ Accordion
+  const faqItems = document.querySelectorAll('.faq-item');
+  faqItems.forEach(item => {
+    item.querySelector('.faq-question').addEventListener('click', () => {
+      item.classList.toggle('active');
+    });
+  });
+
+  // Scroll reveal
+  const observer = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+      if (entry.isIntersecting) {
+        entry.target.style.opacity = '1';
+        entry.target.style.transform = 'translateY(0)';
+      }
+    });
+  }, { threshold: 0.1 });
+
+  document.querySelectorAll('.service-card, .project-card, .why-card, .process-step, .pricing-card, .testimonial, .team-card, .faq-item, .contact-item').forEach(el => {
+    el.style.opacity = '0';
+    el.style.transform = 'translateY(30px)';
+    el.style.transition = 'opacity 0.6s ease, transform 0.6s ease';
+    observer.observe(el);
+  });
+
+  // Form submit (placeholder - replace with your email)
+  const form = document.getElementById('contactForm');
+  form.addEventListener('submit', (e) => {
+    // FormSubmit will handle the actual submission
+    // Just show a loading state
+    const btn = form.querySelector('.form-submit');
+    btn.innerHTML = '<i class="fas fa-spinner fa-spin"></i> جاري الإرسال...';
+    // Form will submit normally
+  });
+</script>
+
+</body>
+</html>
