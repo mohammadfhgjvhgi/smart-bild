@@ -3,14 +3,198 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>حاسبة التكلفة | SmartBuild Palestine</title>
-<meta name="description" content="احسب تكلفة مشروع الأتمتة والأنظمة الذكية في 60 ثانية">
+<title>حاسبة التكلفة التقديرية الذكية | SmartBuild Palestine</title>
+<meta name="description" content="احسب تكلفة مشروع الأتمتة والأنظمة الذكية في 60 ثانية — حاسبة تفاعلية ذكية">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@300;400;600;700;800;900&family=Tajawal:wght@300;400;500;700;900&family=JetBrains+Mono:wght@400;500;700&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
 <link rel="stylesheet" href="assets/css/main.css">
+<style>
+.calculator-box {
+  background: var(--card);
+  border: 1px solid var(--accent);
+  border-radius: 16px;
+  padding: 35px;
+  margin: 30px 0;
+  box-shadow: var(--shadow);
+}
+.calc-section {
+  margin-bottom: 25px;
+  padding-bottom: 20px;
+  border-bottom: 1px solid var(--border);
+}
+.calc-section:last-of-type { border-bottom: none; }
+.calc-section label {
+  display: block;
+  color: var(--text);
+  font-weight: 700;
+  margin-bottom: 10px;
+  font-family: 'Cairo', sans-serif;
+  font-size: 1rem;
+}
+.calc-section label .hint {
+  color: var(--text-2);
+  font-size: 0.85rem;
+  font-weight: 400;
+}
+.calc-input, .calc-select {
+  width: 100%;
+  padding: 12px 15px;
+  background: var(--bg);
+  border: 1px solid var(--border);
+  border-radius: 8px;
+  color: var(--text);
+  font-family: 'Tajawal', sans-serif;
+  font-size: 1rem;
+  transition: var(--transition);
+}
+.calc-input:focus, .calc-select:focus {
+  outline: none;
+  border-color: var(--accent);
+}
+.calc-checkbox-group {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+  gap: 10px;
+}
+.calc-checkbox {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  padding: 12px 15px;
+  background: var(--bg);
+  border: 1px solid var(--border);
+  border-radius: 8px;
+  cursor: pointer;
+  transition: var(--transition);
+}
+.calc-checkbox:hover { border-color: var(--accent); }
+.calc-checkbox.checked {
+  background: rgba(255,107,53,0.1);
+  border-color: var(--accent);
+}
+.calc-checkbox input { display: none; }
+.calc-checkbox .check-icon {
+  width: 20px;
+  height: 20px;
+  border: 2px solid var(--border);
+  border-radius: 4px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: var(--transition);
+}
+.calc-checkbox.checked .check-icon {
+  background: var(--accent);
+  border-color: var(--accent);
+  color: var(--bg);
+}
+.calc-checkbox .check-icon i { font-size: 0.8rem; opacity: 0; transition: var(--transition); }
+.calc-checkbox.checked .check-icon i { opacity: 1; }
+.calc-checkbox .label-text {
+  color: var(--text);
+  font-size: 0.9rem;
+  flex: 1;
+}
+.calc-checkbox .price-tag {
+  color: var(--accent);
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 0.85rem;
+  font-weight: 700;
+}
+.calc-btn {
+  width: 100%;
+  background: var(--gradient);
+  color: var(--bg);
+  padding: 18px;
+  border: none;
+  border-radius: 12px;
+  font-family: 'Cairo', sans-serif;
+  font-weight: 700;
+  font-size: 1.15rem;
+  cursor: pointer;
+  transition: var(--transition);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+}
+.calc-btn:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 8px 25px rgba(255,107,53,0.4);
+}
+.calc-result {
+  margin-top: 25px;
+  padding: 30px;
+  background: linear-gradient(135deg, rgba(255,107,53,0.1), rgba(255,182,39,0.05));
+  border: 1px solid var(--accent);
+  border-radius: 14px;
+  text-align: center;
+  display: none;
+}
+.calc-result.show { display: block; animation: fadeInUp 0.5s ease; }
+.calc-result-label {
+  color: var(--text-2);
+  font-size: 0.95rem;
+  margin-bottom: 10px;
+}
+.calc-result-price {
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 2.8rem;
+  font-weight: 700;
+  background: var(--gradient);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+  margin-bottom: 15px;
+  display: block;
+}
+.calc-result-breakdown {
+  text-align: right;
+  margin: 20px 0;
+  padding: 15px;
+  background: var(--bg);
+  border-radius: 8px;
+}
+.calc-result-breakdown .row {
+  display: flex;
+  justify-content: space-between;
+  padding: 6px 0;
+  color: var(--text-2);
+  font-size: 0.9rem;
+}
+.calc-result-breakdown .row.total {
+  border-top: 1px solid var(--border);
+  margin-top: 8px;
+  padding-top: 12px;
+  color: var(--text);
+  font-weight: 700;
+  font-size: 1rem;
+}
+.calc-result-disclaimer {
+  color: var(--text-2);
+  font-size: 0.8rem;
+  margin-top: 15px;
+  padding: 10px;
+  background: rgba(74,222,128,0.05);
+  border-right: 3px solid var(--accent-3);
+  border-radius: 4px;
+}
+.calc-result-cta {
+  margin-top: 20px;
+  display: flex;
+  gap: 10px;
+  flex-wrap: wrap;
+  justify-content: center;
+}
+@keyframes fadeInUp {
+  from { opacity: 0; transform: translateY(20px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+</style>
 </head>
 <body>
+
 <nav id="navbar">
   <a href="index.html" class="logo">
     <div class="logo-icon">S</div>
@@ -27,6 +211,10 @@
         <a href="services/automation.html"><i class="fas fa-house-laptop"></i> الأتمتة المنزلية</a>
         <a href="services/solar.html"><i class="fas fa-solar-panel"></i> الطاقة الشمسية</a>
         <a href="services/maintenance.html"><i class="fas fa-headset"></i> الصيانة والدعم</a>
+        <a href="services/curtains.html"><i class="fas fa-blinds"></i> الستائر الذكية</a>
+        <a href="services/underfloor.html"><i class="fas fa-temperature-high"></i> تدفئة تحت البلاط</a>
+        <a href="services/audio.html"><i class="fas fa-music"></i> الأنظمة الصوتية</a>
+        <a href="services/irrigation.html"><i class="fas fa-seedling"></i> الري الذكي</a>
       </div>
     </li>
     <li><a href="projects/index.html">مشاريعنا</a></li>
@@ -45,115 +233,132 @@
       <span class="separator">/</span>
       <span>حاسبة التكلفة</span>
     </div>
-    <h1 class="page-title">حاسبة <span class="accent">التكلفة</span></h1>
-    <p class="page-subtitle">اختر نوع المبنى + المساحة + الأنظمة المطلوبة، واحصل على عرض سعر فوري خلال 60 ثانية</p>
+    <h1 class="page-title">حاسبة التكلفة <span class="accent">التقديرية الذكية</span></h1>
+    <p class="page-subtitle">اختر نوع المنشأة + المساحة + الأنظمة المطلوبة، واحصل على تقدير مالي فوري خلال 60 ثانية</p>
   </div>
 </section>
 
 <section>
-  <div class="configurator">
-    <div class="config-grid">
-      <div>
-        <div class="config-option">
-          <label>نوع المبنى <span class="hint">(يؤثر على تكلفة التركيب)</span></label>
-          <div class="chip-group">
-            <button class="chip active" data-building="villa">فيلا</button>
-            <button class="chip" data-building="apartment">شقة</button>
-            <button class="chip" data-building="shop">محل تجاري</button>
-            <button class="chip" data-building="factory">مصنع</button>
-          </div>
-        </div>
+  <div class="calculator-box">
+    <div class="calc-section">
+      <label>نوع المنشأة <span class="hint">(يؤثر على معامل التكلفة)</span></label>
+      <select class="calc-select" id="buildingType">
+        <option value="1.0">شقة سكنية (معامل 1.0)</option>
+        <option value="1.3" selected>فيلا / قصر (معامل 1.3)</option>
+        <option value="1.5">منشأة تجارية / صناعية (معامل 1.5)</option>
+      </select>
+    </div>
 
-        <div class="config-option">
-          <label for="area">المساحة (م²) <span class="hint">— المساحة الكلية للمبنى</span></label>
-          <input type="number" class="config-input" id="area" data-key="area" value="200" min="50" max="2000" step="10">
-        </div>
+    <div class="calc-section">
+      <label for="areaSize">المساحة الإجمالية (م²) <span class="hint">— المساحة الكلية للمنشأة</span></label>
+      <input type="number" class="calc-input" id="areaSize" value="200" min="50" max="5000" step="10">
+    </div>
 
-        <div class="config-option">
-          <label>الأنظمة المطلوبة <span class="hint">(اختر ما يناسبك)</span></label>
-          <div class="chip-group">
-            <button class="chip" data-service="fire"><i class="fas fa-fire-extinguisher"></i> إنذار حريق</button>
-            <button class="chip" data-service="security"><i class="fas fa-bell"></i> إنذار سرقة</button>
-            <button class="chip" data-service="cameras"><i class="fas fa-video"></i> كاميرات مراقبة</button>
-            <button class="chip" data-service="automation"><i class="fas fa-house-laptop"></i> أتمتة منزلية</button>
-            <button class="chip" data-service="solar"><i class="fas fa-solar-panel"></i> طاقة شمسية</button>
-          </div>
-        </div>
-
-        <div id="cameras-extra" style="display:none;">
-          <div class="config-option">
-            <label for="cameraCount">عدد الكاميرات</label>
-            <input type="number" class="config-input" id="cameraCount" data-key="cameras" value="4" min="1" max="32" step="1">
-          </div>
-        </div>
-
-        <div id="automation-extra" style="display:none;">
-          <div class="config-option">
-            <label for="roomCount">عدد الغرف للأتمتة</label>
-            <input type="number" class="config-input" id="roomCount" data-key="rooms" value="4" min="1" max="20" step="1">
-          </div>
-        </div>
-
-        <div id="solar-extra" style="display:none;">
-          <div class="config-option">
-            <label for="solarKw">قدرة النظام الشمسي (kW)</label>
-            <input type="number" class="config-input" id="solarKw" data-key="solarKw" value="3" min="1" max="20" step="0.5">
-          </div>
-        </div>
-
-        <div class="config-option">
-          <label>عقد الصيانة <span class="hint">(اختياري)</span></label>
-          <div class="chip-group">
-            <button class="chip active" data-maintenance="none">بدون</button>
-            <button class="chip" data-maintenance="monthly">شهري</button>
-            <button class="chip" data-maintenance="quarterly">ربعي</button>
-          </div>
-        </div>
-
-        <div class="card" style="margin-top:30px;border-color:var(--accent-3);background:linear-gradient(135deg,rgba(74,222,128,0.05),var(--card));">
-          <p style="color:var(--text-2);font-size:0.9rem;">
-            <i class="fas fa-info-circle" style="color:var(--accent-3);"></i>
-            <strong style="color:var(--text);">ملاحظة:</strong> هذه تكلفة تقديرية. عرض السعر النهائي قد يختلف بناءً على المعاينة الميدانية.
-          </p>
-        </div>
-      </div>
-
-      <div class="config-summary">
-        <h3>ملخص الطلب</h3>
-        <div id="configSummaryRows">
-          <div class="summary-row"><span class="summary-label">نوع المبنى</span><span class="summary-value">فيلا</span></div>
-          <div class="summary-row"><span class="summary-label">المساحة</span><span class="summary-value">200 م²</span></div>
-        </div>
-        <div class="summary-total">
-          <span class="label">التكلفة التقديرية</span>
-          <span class="price" id="configTotal">0 ₪</span>
-        </div>
-        <a href="index.html#contact" class="btn btn-primary" style="width:100%;margin-top:25px;justify-content:center;">
-          <i class="fas fa-paper-plane"></i> اطلب عرض السعر الرسمي
-        </a>
-        <p style="color:var(--text-2);font-size:0.85rem;text-align:center;margin-top:15px;">
-          عرض السعر الرسمي شامل: معاينة ميدانية + تصميم + تركيب + ضمان
-        </p>
+    <div class="calc-section">
+      <label>الأنظمة المطلوبة <span class="hint">(يمكنك اختيار أكثر من نظام)</span></label>
+      <div class="calc-checkbox-group">
+        <label class="calc-checkbox" data-id="sysFire" data-price="400">
+          <input type="checkbox" id="sysFire" value="400">
+          <div class="check-icon"><i class="fas fa-check"></i></div>
+          <span class="label-text">إنذار الحريق الذكي (NFPA 101)</span>
+          <span class="price-tag">+400₪</span>
+        </label>
+        <label class="calc-checkbox" data-id="sysTheft" data-price="500">
+          <input type="checkbox" id="sysTheft" value="500">
+          <div class="check-icon"><i class="fas fa-check"></i></div>
+          <span class="label-text">إنذار السرقة والاقتحام</span>
+          <span class="price-tag">+500₪</span>
+        </label>
+        <label class="calc-checkbox checked" data-id="sysAutomation" data-price="1200">
+          <input type="checkbox" id="sysAutomation" value="1200" checked>
+          <div class="check-icon"><i class="fas fa-check"></i></div>
+          <span class="label-text">الأتمتة الكاملة (إنارة وتكييف)</span>
+          <span class="price-tag">+1200₪</span>
+        </label>
+        <label class="calc-checkbox" data-id="sysCurtains" data-price="800">
+          <input type="checkbox" id="sysCurtains" value="800">
+          <div class="check-icon"><i class="fas fa-check"></i></div>
+          <span class="label-text">الستائر والأباجورات الذكية</span>
+          <span class="price-tag">+800₪</span>
+        </label>
+        <label class="calc-checkbox" data-id="sysUnderfloor" data-price="1500">
+          <input type="checkbox" id="sysUnderfloor" value="1500">
+          <div class="check-icon"><i class="fas fa-check"></i></div>
+          <span class="label-text">تدفئة تحت البلاط</span>
+          <span class="price-tag">+1500₪</span>
+        </label>
+        <label class="calc-checkbox" data-id="sysAudio" data-price="2000">
+          <input type="checkbox" id="sysAudio" value="2000">
+          <div class="check-icon"><i class="fas fa-check"></i></div>
+          <span class="label-text">الأنظمة الصوتية متعددة المناطق</span>
+          <span class="price-tag">+2000₪</span>
+        </label>
+        <label class="calc-checkbox" data-id="sysIrrigation" data-price="700">
+          <input type="checkbox" id="sysIrrigation" value="700">
+          <div class="check-icon"><i class="fas fa-check"></i></div>
+          <span class="label-text">الري الذكي للحدائق</span>
+          <span class="price-tag">+700₪</span>
+        </label>
+        <label class="calc-checkbox" data-id="sysSolar" data-price="1500">
+          <input type="checkbox" id="sysSolar" value="1500">
+          <div class="check-icon"><i class="fas fa-check"></i></div>
+          <span class="label-text">دمج الطاقة الشمسية الذكية</span>
+          <span class="price-tag">+1500₪</span>
+        </label>
       </div>
     </div>
+
+    <button class="calc-btn" onclick="calculateSmartCost()">
+      <i class="fas fa-calculator"></i> احسب التكلفة فوراً
+    </button>
+
+    <div class="calc-result" id="calcResult">
+      <div class="calc-result-label">التكلفة التقديرية الإجمالية</div>
+      <span class="calc-result-price" id="resultPrice">0 ₪</span>
+      <div class="calc-result-breakdown" id="resultBreakdown"></div>
+      <div class="calc-result-disclaimer">
+        <i class="fas fa-info-circle"></i>
+        <strong>ملاحظة:</strong> هذه تكلفة تقديرية. عرض السعر النهائي قد يختلف بناءً على المعاينة الميدانية وتفاصيل المشروع.
+      </div>
+      <div class="calc-result-cta">
+        <a href="index.html#contact" class="btn btn-primary btn-sm">
+          <i class="fas fa-paper-plane"></i> اطلب عرض السعر الرسمي
+        </a>
+        <a href="https://wa.me/9705XXXXXXXX" class="btn btn-outline btn-sm" target="_blank">
+          <i class="fab fa-whatsapp"></i> استشارة واتساب
+        </a>
+      </div>
+    </div>
+  </div>
+
+  <div class="card" style="margin-top:30px;border-color:var(--accent-3);background:linear-gradient(135deg,rgba(74,222,128,0.05),var(--card));">
+    <h3 style="font-family:'Cairo',sans-serif;color:var(--accent-3);font-size:1.2rem;margin-bottom:15px;">
+      <i class="fas fa-info-circle"></i> كيف نحسب التكلفة؟
+    </h3>
+    <p style="color:var(--text-2);margin-bottom:15px;">
+      <strong style="color:var(--text);">المعادلة الهندسية:</strong> (المساحة × سعر المتر الأساسي + تكلفة الأنظمة المختارة) × معامل نوع المنشأة
+    </p>
+    <p style="color:var(--text-2);">
+      سعر المتر الأساسي يشمل: تصميم المخططات الهندسية + توزيع الأحمال (Smart Loop) + حساب سعة لوحات التحكم (DB Panels) + التأسيس الكامل.
+    </p>
   </div>
 </section>
 
 <section style="background:var(--bg-2);">
   <div class="section-header">
     <span class="section-num">معلومات مهمة</span>
-    <h2 class="section-title">كيف نحسب التكلفة؟</h2>
+    <h2 class="section-title">عوامل تأثير التكلفة</h2>
   </div>
   <div class="grid grid-3">
     <div class="card">
       <div class="card-icon"><i class="fas fa-ruler-combined"></i></div>
       <h3>المساحة</h3>
-      <p>التكلفة تتناسب مع المساحة — كلما زادت المساحة، زاد عدد الحساسات والكاميرات المطلوبة.</p>
+      <p>التكلفة تتناسب مع المساحة — كلما زادت المساحة، زاد عدد الحساسات والمنافذ المطلوبة.</p>
     </div>
     <div class="card">
       <div class="card-icon"><i class="fas fa-building"></i></div>
-      <h3>نوع المبنى</h3>
-      <p>كل نوع مبنى له متطلبات مختلفة — المصانع تحتاج أنظمة أقوى، الشقق تحتاج تكاليف أقل.</p>
+      <h3>نوع المنشأة</h3>
+      <p>الفلل لها معامل 1.3، المنشآت التجارية 1.5 — لاختلاف متطلبات الأمان والتقنية.</p>
     </div>
     <div class="card">
       <div class="card-icon"><i class="fas fa-cogs"></i></div>
@@ -162,6 +367,7 @@
     </div>
   </div>
 </section>
+
 <footer>
   <div class="footer-grid">
     <div class="footer-brand">
@@ -186,8 +392,8 @@
     <div class="footer-col"><h4>خدماتنا</h4><ul>
       <li><a href="services/fire.html">إنذار حريق</a></li>
       <li><a href="services/security.html">إنذار سرقة</a></li>
-      <li><a href="services/cameras.html">كاميرات مراقبة</a></li>
-      <li><a href="services/solar.html">طاقة شمسية</a></li>
+      <li><a href="services/automation.html">أتمتة منزلية</a></li>
+      <li><a href="services/curtains.html">ستائر ذكية</a></li>
     </ul></div>
     <div class="footer-col"><h4>القانون والدعم</h4><ul>
       <li><a href="legal/terms.html">شروط الخدمة</a></li>
@@ -199,7 +405,76 @@
     <p>© 2026 SmartBuild Palestine · جميع الحقوق محفوظة · صُمم بـ <span class="heart">♥</span> في دورا · فلسطين</p>
   </div>
 </footer>
+
 <a href="https://wa.me/9705XXXXXXXX" class="whatsapp-float" target="_blank" aria-label="WhatsApp"><i class="fab fa-whatsapp"></i></a>
+
 <script src="assets/js/main.js"></script>
+<script>
+// Smart Calculator Logic
+document.querySelectorAll('.calc-checkbox').forEach(box => {
+  box.addEventListener('click', (e) => {
+    e.preventDefault();
+    const checkbox = box.querySelector('input');
+    checkbox.checked = !checkbox.checked;
+    box.classList.toggle('checked');
+  });
+});
+
+function calculateSmartCost() {
+  const buildingModifier = parseFloat(document.getElementById('buildingType').value);
+  const area = parseFloat(document.getElementById('areaSize').value) || 0;
+  const basePricePerMeter = 5; // سعر تأسيس المتر الأساسي بالشيكل
+
+  const systems = [];
+  let systemsCost = 0;
+
+  const sysConfig = [
+    { id: 'sysFire', name: 'إنذار الحريق الذكي (NFPA 101)', price: 400 },
+    { id: 'sysTheft', name: 'إنذار السرقة والاقتحام', price: 500 },
+    { id: 'sysAutomation', name: 'الأتمتة الكاملة (إنارة وتكييف)', price: 1200 },
+    { id: 'sysCurtains', name: 'الستائر والأباجورات الذكية', price: 800 },
+    { id: 'sysUnderfloor', name: 'تدفئة تحت البلاط', price: 1500 },
+    { id: 'sysAudio', name: 'الأنظمة الصوتية متعددة المناطق', price: 2000 },
+    { id: 'sysIrrigation', name: 'الري الذكي للحدائق', price: 700 },
+    { id: 'sysSolar', name: 'دمج الطاقة الشمسية الذكية', price: 1500 }
+  ];
+
+  sysConfig.forEach(sys => {
+    const el = document.getElementById(sys.id);
+    if (el && el.checked) {
+      systems.push(sys);
+      systemsCost += sys.price;
+    }
+  });
+
+  const foundation = area * basePricePerMeter;
+  const subtotal = foundation + systemsCost;
+  const totalEstimation = Math.round(subtotal * buildingModifier);
+
+  // Show result
+  const result = document.getElementById('calcResult');
+  result.classList.add('show');
+
+  // Update price
+  document.getElementById('resultPrice').textContent = totalEstimation.toLocaleString() + ' ₪';
+
+  // Build breakdown
+  let breakdownHtml = '';
+  breakdownHtml += `<div class="row"><span>تأسيس المساحة (${area} م² × ${basePricePerMeter}₪)</span><span>${foundation.toLocaleString()} ₪</span></div>`;
+  systems.forEach(sys => {
+    breakdownHtml += `<div class="row"><span>${sys.name}</span><span>+${sys.price.toLocaleString()} ₪</span></div>`;
+  });
+  breakdownHtml += `<div class="row"><span>معامل نوع المنشأة (×${buildingModifier})</span><span>×${buildingModifier}</span></div>`;
+  breakdownHtml += `<div class="row total"><span>الإجمالي التقديري</span><span>${totalEstimation.toLocaleString()} ₪ *</span></div>`;
+
+  document.getElementById('resultBreakdown').innerHTML = breakdownHtml;
+
+  // Smooth scroll to result
+  setTimeout(() => {
+    result.scrollIntoView({ behavior: 'smooth', block: 'center' });
+  }, 100);
+}
+</script>
+
 </body>
 </html>
