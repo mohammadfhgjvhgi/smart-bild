@@ -1,0 +1,205 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>حاسبة التكلفة | SmartBuild Palestine</title>
+<meta name="description" content="احسب تكلفة مشروع الأتمتة والأنظمة الذكية في 60 ثانية">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Cairo:wght@300;400;600;700;800;900&family=Tajawal:wght@300;400;500;700;900&family=JetBrains+Mono:wght@400;500;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+<link rel="stylesheet" href="assets/css/main.css">
+</head>
+<body>
+<nav id="navbar">
+  <a href="index.html" class="logo">
+    <div class="logo-icon">S</div>
+    <div class="logo-text"><span class="ar">سمارت بيلد</span><span class="en">SMARTBUILD.PS</span></div>
+  </a>
+  <ul class="nav-links" id="navLinks">
+    <li><a href="index.html">الرئيسية</a></li>
+    <li class="nav-dropdown">
+      <a href="services/index.html">خدماتنا <i class="fas fa-chevron-down" style="font-size:0.7rem;"></i></a>
+      <div class="nav-dropdown-menu">
+        <a href="services/fire.html"><i class="fas fa-fire-extinguisher"></i> إنذار الحريق</a>
+        <a href="services/security.html"><i class="fas fa-bell"></i> إنذار السرقة</a>
+        <a href="services/cameras.html"><i class="fas fa-video"></i> كاميرات المراقبة</a>
+        <a href="services/automation.html"><i class="fas fa-house-laptop"></i> الأتمتة المنزلية</a>
+        <a href="services/solar.html"><i class="fas fa-solar-panel"></i> الطاقة الشمسية</a>
+        <a href="services/maintenance.html"><i class="fas fa-headset"></i> الصيانة والدعم</a>
+      </div>
+    </li>
+    <li><a href="projects/index.html">مشاريعنا</a></li>
+    <li><a href="about.html">من نحن</a></li>
+    <li><a href="configurator.html">حاسبة التكلفة</a></li>
+    <li><a href="portal/login.html">بوابة العميل</a></li>
+    <li><a href="index.html#contact" class="nav-cta">اطلب عرض سعر</a></li>
+  </ul>
+  <button class="menu-toggle" id="menuToggle"><i class="fas fa-bars"></i></button>
+</nav>
+
+<section class="page-header">
+  <div class="page-header-content">
+    <div class="breadcrumb">
+      <a href="index.html">الرئيسية</a>
+      <span class="separator">/</span>
+      <span>حاسبة التكلفة</span>
+    </div>
+    <h1 class="page-title">حاسبة <span class="accent">التكلفة</span></h1>
+    <p class="page-subtitle">اختر نوع المبنى + المساحة + الأنظمة المطلوبة، واحصل على عرض سعر فوري خلال 60 ثانية</p>
+  </div>
+</section>
+
+<section>
+  <div class="configurator">
+    <div class="config-grid">
+      <div>
+        <div class="config-option">
+          <label>نوع المبنى <span class="hint">(يؤثر على تكلفة التركيب)</span></label>
+          <div class="chip-group">
+            <button class="chip active" data-building="villa">فيلا</button>
+            <button class="chip" data-building="apartment">شقة</button>
+            <button class="chip" data-building="shop">محل تجاري</button>
+            <button class="chip" data-building="factory">مصنع</button>
+          </div>
+        </div>
+
+        <div class="config-option">
+          <label for="area">المساحة (م²) <span class="hint">— المساحة الكلية للمبنى</span></label>
+          <input type="number" class="config-input" id="area" data-key="area" value="200" min="50" max="2000" step="10">
+        </div>
+
+        <div class="config-option">
+          <label>الأنظمة المطلوبة <span class="hint">(اختر ما يناسبك)</span></label>
+          <div class="chip-group">
+            <button class="chip" data-service="fire"><i class="fas fa-fire-extinguisher"></i> إنذار حريق</button>
+            <button class="chip" data-service="security"><i class="fas fa-bell"></i> إنذار سرقة</button>
+            <button class="chip" data-service="cameras"><i class="fas fa-video"></i> كاميرات مراقبة</button>
+            <button class="chip" data-service="automation"><i class="fas fa-house-laptop"></i> أتمتة منزلية</button>
+            <button class="chip" data-service="solar"><i class="fas fa-solar-panel"></i> طاقة شمسية</button>
+          </div>
+        </div>
+
+        <div id="cameras-extra" style="display:none;">
+          <div class="config-option">
+            <label for="cameraCount">عدد الكاميرات</label>
+            <input type="number" class="config-input" id="cameraCount" data-key="cameras" value="4" min="1" max="32" step="1">
+          </div>
+        </div>
+
+        <div id="automation-extra" style="display:none;">
+          <div class="config-option">
+            <label for="roomCount">عدد الغرف للأتمتة</label>
+            <input type="number" class="config-input" id="roomCount" data-key="rooms" value="4" min="1" max="20" step="1">
+          </div>
+        </div>
+
+        <div id="solar-extra" style="display:none;">
+          <div class="config-option">
+            <label for="solarKw">قدرة النظام الشمسي (kW)</label>
+            <input type="number" class="config-input" id="solarKw" data-key="solarKw" value="3" min="1" max="20" step="0.5">
+          </div>
+        </div>
+
+        <div class="config-option">
+          <label>عقد الصيانة <span class="hint">(اختياري)</span></label>
+          <div class="chip-group">
+            <button class="chip active" data-maintenance="none">بدون</button>
+            <button class="chip" data-maintenance="monthly">شهري</button>
+            <button class="chip" data-maintenance="quarterly">ربعي</button>
+          </div>
+        </div>
+
+        <div class="card" style="margin-top:30px;border-color:var(--accent-3);background:linear-gradient(135deg,rgba(74,222,128,0.05),var(--card));">
+          <p style="color:var(--text-2);font-size:0.9rem;">
+            <i class="fas fa-info-circle" style="color:var(--accent-3);"></i>
+            <strong style="color:var(--text);">ملاحظة:</strong> هذه تكلفة تقديرية. عرض السعر النهائي قد يختلف بناءً على المعاينة الميدانية.
+          </p>
+        </div>
+      </div>
+
+      <div class="config-summary">
+        <h3>ملخص الطلب</h3>
+        <div id="configSummaryRows">
+          <div class="summary-row"><span class="summary-label">نوع المبنى</span><span class="summary-value">فيلا</span></div>
+          <div class="summary-row"><span class="summary-label">المساحة</span><span class="summary-value">200 م²</span></div>
+        </div>
+        <div class="summary-total">
+          <span class="label">التكلفة التقديرية</span>
+          <span class="price" id="configTotal">0 ₪</span>
+        </div>
+        <a href="index.html#contact" class="btn btn-primary" style="width:100%;margin-top:25px;justify-content:center;">
+          <i class="fas fa-paper-plane"></i> اطلب عرض السعر الرسمي
+        </a>
+        <p style="color:var(--text-2);font-size:0.85rem;text-align:center;margin-top:15px;">
+          عرض السعر الرسمي شامل: معاينة ميدانية + تصميم + تركيب + ضمان
+        </p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section style="background:var(--bg-2);">
+  <div class="section-header">
+    <span class="section-num">معلومات مهمة</span>
+    <h2 class="section-title">كيف نحسب التكلفة؟</h2>
+  </div>
+  <div class="grid grid-3">
+    <div class="card">
+      <div class="card-icon"><i class="fas fa-ruler-combined"></i></div>
+      <h3>المساحة</h3>
+      <p>التكلفة تتناسب مع المساحة — كلما زادت المساحة، زاد عدد الحساسات والكاميرات المطلوبة.</p>
+    </div>
+    <div class="card">
+      <div class="card-icon"><i class="fas fa-building"></i></div>
+      <h3>نوع المبنى</h3>
+      <p>كل نوع مبنى له متطلبات مختلفة — المصانع تحتاج أنظمة أقوى، الشقق تحتاج تكاليف أقل.</p>
+    </div>
+    <div class="card">
+      <div class="card-icon"><i class="fas fa-cogs"></i></div>
+      <h3>الأنظمة المطلوبة</h3>
+      <p>اختر ما تحتاجه فقط — لا ندفعك لأنظمة لا تريدها. كل نظام له تكلفته المستقلة.</p>
+    </div>
+  </div>
+</section>
+<footer>
+  <div class="footer-grid">
+    <div class="footer-brand">
+      <a href="index.html" class="logo">
+        <div class="logo-icon">S</div>
+        <div class="logo-text"><span class="ar">سمارت بيلد</span><span class="en">SMARTBUILD.PS</span></div>
+      </a>
+      <p>شركة فلسطينية متخصصة في أنظمة المباني الذكية والأتمتة.</p>
+      <div class="social-links">
+        <a href="#" aria-label="Facebook"><i class="fab fa-facebook-f"></i></a>
+        <a href="#" aria-label="Instagram"><i class="fab fa-instagram"></i></a>
+        <a href="#" aria-label="WhatsApp"><i class="fab fa-whatsapp"></i></a>
+        <a href="#" aria-label="LinkedIn"><i class="fab fa-linkedin-in"></i></a>
+      </div>
+    </div>
+    <div class="footer-col"><h4>روابط سريعة</h4><ul>
+      <li><a href="index.html">الرئيسية</a></li>
+      <li><a href="about.html">من نحن</a></li>
+      <li><a href="projects/index.html">مشاريعنا</a></li>
+      <li><a href="configurator.html">حاسبة التكلفة</a></li>
+    </ul></div>
+    <div class="footer-col"><h4>خدماتنا</h4><ul>
+      <li><a href="services/fire.html">إنذار حريق</a></li>
+      <li><a href="services/security.html">إنذار سرقة</a></li>
+      <li><a href="services/cameras.html">كاميرات مراقبة</a></li>
+      <li><a href="services/solar.html">طاقة شمسية</a></li>
+    </ul></div>
+    <div class="footer-col"><h4>القانون والدعم</h4><ul>
+      <li><a href="legal/terms.html">شروط الخدمة</a></li>
+      <li><a href="legal/privacy.html">سياسة الخصوصية</a></li>
+      <li><a href="portal/login.html">بوابة العميل</a></li>
+    </ul></div>
+  </div>
+  <div class="footer-bottom">
+    <p>© 2026 SmartBuild Palestine · جميع الحقوق محفوظة · صُمم بـ <span class="heart">♥</span> في دورا · فلسطين</p>
+  </div>
+</footer>
+<a href="https://wa.me/9705XXXXXXXX" class="whatsapp-float" target="_blank" aria-label="WhatsApp"><i class="fab fa-whatsapp"></i></a>
+<script src="assets/js/main.js"></script>
+</body>
+</html>

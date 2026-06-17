@@ -1,0 +1,131 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>لوحة التحكم - العميل | SmartBuild Palestine</title>
+<meta name="description" content="لوحة تحكم العميل - تابع مشاريعك وفواتيرك وتذاكر الدعم">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Cairo:wght@300;400;600;700;800;900&family=Tajawal:wght@300;400;500;700;900&family=JetBrains+Mono:wght@400;500;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+<link rel="stylesheet" href="../assets/css/main.css">
+</head>
+<body>
+<nav id="navbar" style="background:rgba(10,22,40,0.92);">
+  <a href="../index.html" class="logo">
+    <div class="logo-icon">S</div>
+    <div class="logo-text"><span class="ar">سمارت بيلد</span><span class="en">SMARTBUILD.PS</span></div>
+  </a>
+  <ul class="nav-links" id="navLinks">
+    <li><a href="../index.html">الرئيسية</a></li>
+    <li><a href="../index.html#contact" class="nav-cta">تواصل معنا</a></li>
+  </ul>
+  <button class="menu-toggle" id="menuToggle"><i class="fas fa-bars"></i></button>
+</nav>
+
+<div style="max-width:1200px;margin:0 auto;padding:0 5%;">
+  <div class="dashboard-grid">
+    <aside class="dashboard-sidebar">
+      <h4>القائمة</h4>
+      <ul class="dashboard-menu">
+        <li><a href="#" class="active"><i class="fas fa-tachometer-alt"></i> الرئيسية</a></li>
+        <li><a href="#"><i class="fas fa-project-diagram"></i> مشاريعي</a></li>
+        <li><a href="#"><i class="fas fa-file-invoice-dollar"></i> الفواتير</a></li>
+        <li><a href="#"><i class="fas fa-tools"></i> عقود الصيانة</a></li>
+        <li><a href="#"><i class="fas fa-ticket-alt"></i> تذاكر الدعم</a></li>
+        <li><a href="#"><i class="fas fa-cog"></i> الإعدادات</a></li>
+        <li><a href="login.html" style="color:#ef4444;"><i class="fas fa-sign-out-alt"></i> تسجيل الخروج</a></li>
+      </ul>
+    </aside>
+    <main class="dashboard-content">
+      <h2>أهلاً بك في لوحة التحكم</h2>
+      <div class="grid grid-3">
+        <div class="stat-card">
+          <div class="stat-icon">📋</div>
+          <span class="stat-value">3</span>
+          <div class="stat-label">مشاريع نشطة</div>
+        </div>
+        <div class="stat-card">
+          <div class="stat-icon">✅</div>
+          <span class="stat-value">7</span>
+          <div class="stat-label">مشاريع مكتملة</div>
+        </div>
+        <div class="stat-card">
+          <div class="stat-icon">🎫</div>
+          <span class="stat-value">2</span>
+          <div class="stat-label">تذاكر مفتوحة</div>
+        </div>
+      </div>
+
+      <div class="card" style="margin-top:30px;">
+        <h3 style="font-family:'Cairo',sans-serif;color:var(--accent);margin-bottom:15px;">
+          <i class="fas fa-bell"></i> آخر التحديثات
+        </h3>
+        <div style="display:grid;gap:10px;">
+          <div style="padding:15px;background:var(--bg);border-radius:8px;border-right:3px solid var(--accent-3);">
+            <strong style="color:var(--text);">✅ اكتمل مشروع BMS</strong>
+            <p style="color:var(--text-2);font-size:0.85rem;margin-top:5px;">تم تسليم المشروع بنجاح — بتاريخ 11/6/2026</p>
+          </div>
+          <div style="padding:15px;background:var(--bg);border-radius:8px;border-right:3px solid var(--accent-2);">
+            <strong style="color:var(--text);">🔧 صيانة دورية</strong>
+            <p style="color:var(--text-2);font-size:0.85rem;margin-top:5px;">الصيانة الشهرية القادمة: 15/7/2026</p>
+          </div>
+          <div style="padding:15px;background:var(--bg);border-radius:8px;border-right:3px solid var(--accent);">
+            <strong style="color:var(--text);">🎫 تذكرة دعم فني</strong>
+            <p style="color:var(--text-2);font-size:0.85rem;margin-top:5px;">تم استلام تذكرتك — سيتم الرد خلال 24 ساعة</p>
+          </div>
+        </div>
+      </div>
+
+      <div class="card" style="margin-top:25px;">
+        <h3 style="font-family:'Cairo',sans-serif;color:var(--accent);margin-bottom:15px;">
+          <i class="fas fa-file-invoice"></i> آخر الفواتير
+        </h3>
+        <table style="width:100%;border-collapse:collapse;">
+          <thead>
+            <tr style="border-bottom:1px solid var(--border);">
+              <th style="text-align:right;padding:10px;color:var(--text-2);font-size:0.85rem;">رقم الفاتورة</th>
+              <th style="text-align:right;padding:10px;color:var(--text-2);font-size:0.85rem;">التاريخ</th>
+              <th style="text-align:right;padding:10px;color:var(--text-2);font-size:0.85rem;">المبلغ</th>
+              <th style="text-align:right;padding:10px;color:var(--text-2);font-size:0.85rem;">الحالة</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr style="border-bottom:1px solid var(--border);">
+              <td style="padding:10px;color:var(--text);">#INV-2026-007</td>
+              <td style="padding:10px;color:var(--text-2);font-size:0.9rem;">11/6/2026</td>
+              <td style="padding:10px;color:var(--text);font-family:monospace;">2,500 ₪</td>
+              <td style="padding:10px;"><span style="background:var(--accent-3);color:var(--bg);padding:3px 10px;border-radius:12px;font-size:0.75rem;font-weight:700;">مدفوعة</span></td>
+            </tr>
+            <tr>
+              <td style="padding:10px;color:var(--text);">#INV-2026-006</td>
+              <td style="padding:10px;color:var(--text-2);font-size:0.9rem;">15/5/2026</td>
+              <td style="padding:10px;color:var(--text);font-family:monospace;">200 ₪</td>
+              <td style="padding:10px;"><span style="background:var(--accent-2);color:var(--bg);padding:3px 10px;border-radius:12px;font-size:0.75rem;font-weight:700;">معلقة</span></td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+
+      <div class="card" style="margin-top:25px;border-color:var(--accent);background:linear-gradient(135deg,rgba(255,107,53,0.05),var(--card));">
+        <h3 style="font-family:'Cairo',sans-serif;color:var(--accent);margin-bottom:15px;">
+          <i class="fas fa-headset"></i> هل تحتاج مساعدة؟
+        </h3>
+        <p style="color:var(--text-2);margin-bottom:20px;">فريق الدعم الفني متاح 24/7 للرد على استفساراتك</p>
+        <div style="display:flex;gap:10px;flex-wrap:wrap;">
+          <a href="https://wa.me/9705XXXXXXXX" class="btn btn-primary btn-sm"><i class="fab fa-whatsapp"></i> واتساب</a>
+          <a href="#" class="btn btn-outline btn-sm"><i class="fas fa-ticket-alt"></i> افتح تذكرة</a>
+        </div>
+      </div>
+    </main>
+  </div>
+</div>
+<div style="height:80px;"></div>
+<footer style="padding:30px 5%;border-top:1px solid var(--border);">
+  <div class="footer-bottom" style="border:none;padding:0;">
+    <p>© 2026 SmartBuild Palestine · جميع الحقوق محفوظة · <a href="../legal/privacy.html" style="color:var(--accent);">سياسة الخصوصية</a></p>
+  </div>
+</footer>
+<script src="../assets/js/main.js"></script>
+</body>
+</html>

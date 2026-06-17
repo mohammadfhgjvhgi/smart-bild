@@ -1,40 +1,65 @@
-# 🏗️ SmartBuild Palestine
+# 🏗️ SmartBuild Palestine — Corporate Website
 
-> شركة فلسطينية ناشئة من دورا - جنوب الخليل، متخصصة في تصميم وتركيب أنظمة المباني الذكية والأتمتة.
+> الموقع الرسمي للشركة — Multi-page architecture احترافية
 
-## 🌐 الموقع الإلكتروني
+## 🌐 الموقع المباشر
 
-**الرابط:** https://mohammadfhgjvhgi.github.io/smart-bild/
+**https://mohammadfhgjvhgi.github.io/smart-bild/**
 
-## 📋 الخدمات
+## 📋 الصفحات
 
-- 🔥 أنظمة إنذار الحريق
-- 🚨 أنظمة إنذار السرقة
-- 📹 كاميرات المراقبة + NVR
-- 🏠 الأتمتة المنزلية الذكية
-- ☀️ الطاقة الشمسية + الأتمتة
-- 🎧 الصيانة والدعم الفني
+| الصفحة | الرابط |
+|---|---|
+| 🏠 الرئيسية | `index.html` |
+| 📋 من نحن | `about.html` |
+| 👥 الفريق | `team.html` |
+| 🛠️ خدماتنا | `services/` (7 صفحات) |
+| 🎨 المشاريع | `projects/` (5 صفحات) |
+| 🧮 حاسبة التكلفة | `configurator.html` |
+| 🔐 بوابة العميل | `portal/` |
+| ⚖️ شروط الخدمة | `legal/terms.html` |
+| 🔒 سياسة الخصوصية | `legal/privacy.html` |
 
-## 🛠️ التقنيات المستخدمة
+## 🛠️ التقنيات
 
-- HTML5 + CSS3 + JavaScript (Vanilla)
+- HTML5 + CSS3 + Vanilla JavaScript
 - Font Awesome 6 (Icons)
-- Google Fonts (Cairo + Tajawal)
+- Google Fonts (Cairo + Tajawal + JetBrains Mono)
 - FormSubmit.co (Contact Form)
 - GitHub Pages (Hosting)
 
-## 📁 الملفات
+## 📁 البنية
 
 ```
-├── index.html              ← الموقع الرئيسي
-├── GITHUB-PAGES-GUIDE.md   ← دليل الإعداد
-└── README.md               ← هذا الملف
+├── index.html              ← الصفحة الرئيسية
+├── about.html              ← من نحن
+├── team.html               ← الفريق
+├── configurator.html       ← حاسبة التكلفة التفاعلية
+├── services/               ← 7 صفحات خدمات
+│   ├── index.html
+│   ├── fire.html
+│   ├── security.html
+│   ├── cameras.html
+│   ├── automation.html
+│   ├── solar.html
+│   └── maintenance.html
+├── projects/               ← 5 صفحات مشاريع
+│   ├── index.html
+│   ├── sbms.html
+│   ├── garage.html
+│   ├── wedding-hall.html
+│   └── rnd.html
+├── portal/                 ← بوابة العميل
+│   ├── login.html
+│   └── dashboard.html
+├── legal/                  ← الصفحات القانونية
+│   ├── terms.html
+│   └── privacy.html
+├── assets/
+│   ├── css/main.css
+│   └── js/main.js
+└── README.md
 ```
-
-## 📞 تواصل
-
-- 📍 الموقع: دورا · جنوب الخليل · فلسطين
-- 🕘 ساعات العمل: السبت - الخميس · 9 ص - 7 م
 
 ---
 

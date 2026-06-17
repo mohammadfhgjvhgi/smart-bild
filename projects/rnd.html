@@ -1,0 +1,194 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>معمل التطوير - R&D Lab | SmartBuild Palestine</title>
+<meta name="description" content="مشاريع البحث والتطوير في SmartBuild Palestine">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Cairo:wght@300;400;600;700;800;900&family=Tajawal:wght@300;400;500;700;900&family=JetBrains+Mono:wght@400;500;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+<link rel="stylesheet" href="../assets/css/main.css">
+</head>
+<body>
+<nav id="navbar">
+  <a href="../index.html" class="logo">
+    <div class="logo-icon">S</div>
+    <div class="logo-text"><span class="ar">سمارت بيلد</span><span class="en">SMARTBUILD.PS</span></div>
+  </a>
+  <ul class="nav-links" id="navLinks">
+    <li><a href="../index.html">الرئيسية</a></li>
+    <li class="nav-dropdown">
+      <a href="../services/index.html">خدماتنا <i class="fas fa-chevron-down" style="font-size:0.7rem;"></i></a>
+      <div class="nav-dropdown-menu">
+        <a href="../services/fire.html"><i class="fas fa-fire-extinguisher"></i> إنذار الحريق</a>
+        <a href="../services/security.html"><i class="fas fa-bell"></i> إنذار السرقة</a>
+        <a href="../services/cameras.html"><i class="fas fa-video"></i> كاميرات المراقبة</a>
+        <a href="../services/automation.html"><i class="fas fa-house-laptop"></i> الأتمتة المنزلية</a>
+        <a href="../services/solar.html"><i class="fas fa-solar-panel"></i> الطاقة الشمسية</a>
+        <a href="../services/maintenance.html"><i class="fas fa-headset"></i> الصيانة والدعم</a>
+      </div>
+    </li>
+    <li><a href="../projects/index.html">مشاريعنا</a></li>
+    <li><a href="../about.html">من نحن</a></li>
+    <li><a href="../configurator.html">حاسبة التكلفة</a></li>
+    <li><a href="../portal/login.html">بوابة العميل</a></li>
+    <li><a href="../index.html#contact" class="nav-cta">اطلب عرض سعر</a></li>
+  </ul>
+  <button class="menu-toggle" id="menuToggle"><i class="fas fa-bars"></i></button>
+</nav>
+
+<section class="page-header">
+  <div class="page-header-content">
+    <div class="breadcrumb">
+      <a href="../index.html">الرئيسية</a>
+      <span class="separator">/</span>
+      <a href="index.html">مشاريعنا</a>
+      <span class="separator">/</span>
+      <span>R&D Lab</span>
+    </div>
+    <h1 class="page-title">معمل <span class="accent">التطوير</span></h1>
+    <p class="page-subtitle">مشاريع البحث والتطوير — نماذج مبدئية وأنظمة قيد التطوير والاختبار</p>
+  </div>
+</section>
+
+<section>
+  <div class="card" style="background:linear-gradient(135deg,rgba(59,130,246,0.1),var(--card));border-color:var(--accent-4);margin-bottom:40px;">
+    <h3 style="font-family:'Cairo',sans-serif;color:var(--accent-4);font-size:1.3rem;margin-bottom:15px;">
+      <i class="fas fa-flask"></i> رؤيتنا في البحث والتطوير
+    </h3>
+    <p style="color:var(--text-2);">
+      في SmartBuild Palestine نؤمن أن الابتكار المستمر هو مفتاح الريادة. معمل التطوير هو المختبر الذي نختبر فيه تقنيات جديدة، نبني نماذج مبدئية، ونطور حلول مبتكرة قبل إطلاقها للسوق التجاري.
+    </p>
+  </div>
+
+  <div class="grid grid-2" style="gap:30px;">
+    <div class="card" id="safe">
+      <div class="card-icon" style="background:rgba(59,130,246,0.1);border-color:var(--accent-4);color:var(--accent-4);">
+        <i class="fas fa-lock"></i>
+      </div>
+      <h3>الخزنة الذكية المضادة للتجمد v7.3</h3>
+      <p style="color:var(--text-2);margin-bottom:15px;">
+        خزنة ذكية بـ RFID + تطبيق موبايل + ميزة Anti-Freeze المبتكرة التي تمنع تجمد النظام عند انقطاع الإنترنت.
+      </p>
+      <div class="case-specs" style="grid-template-columns:1fr 1fr;">
+        <div class="spec-item"><div class="spec-label">المتحكم</div><div class="spec-value">ESP32</div></div>
+        <div class="spec-item"><div class="spec-label">القارئ</div><div class="spec-value">MFRC522 RFID</div></div>
+        <div class="spec-item"><div class="spec-label">التخزين المحلي</div><div class="spec-value">Preferences NVS</div></div>
+        <div class="spec-item"><div class="spec-label">السعة</div><div class="spec-value">20 كرت + Master</div></div>
+      </div>
+      <h4 style="font-family:'Cairo',sans-serif;color:var(--accent);margin:20px 0 10px;">الميزات المبتكرة:</h4>
+      <ul class="service-features">
+        <li>Anti-Freeze: عداد فشل + cooldown 30 ثانية</li>
+        <li>عمل كامل بدون إنترنت (NVS)</li>
+        <li>وضع ضيف + إنذار + تحكم وقت الإغلاق</li>
+        <li>Master Card + 20 كرت مصرح</li>
+      </ul>
+    </div>
+
+    <div class="card" id="farm">
+      <div class="card-icon" style="background:rgba(59,130,246,0.1);border-color:var(--accent-4);color:var(--accent-4);">
+        <i class="fas fa-tractor"></i>
+      </div>
+      <h3>مزرعة الدجاج الذكية v23.0</h3>
+      <p style="color:var(--text-2);margin-bottom:15px;">
+        نظام مزرعة ذكي بـ 4 حساسات + 3 مخرجات. إدارة حرارة + رطوبة تربة + إنذار علف + إضاءة ليل/نهار تلقائية.
+      </p>
+      <div class="case-specs" style="grid-template-columns:1fr 1fr;">
+        <div class="spec-item"><div class="spec-label">المتحكم</div><div class="spec-value">Arduino Uno</div></div>
+        <div class="spec-item"><div class="spec-label">الحساسات</div><div class="spec-value">DHT11 + LDR + Soil + Ultrasonic</div></div>
+        <div class="spec-item"><div class="spec-label">المخرجات</div><div class="spec-value">3 Relays + Buzzer</div></div>
+        <div class="spec-item"><div class="spec-label">الدقة</div><div class="spec-value">5.2 سم ليزري</div></div>
+      </div>
+      <h4 style="font-family:'Cairo',sans-serif;color:var(--accent);margin:20px 0 10px;">الميزات المبتكرة:</h4>
+      <ul class="service-features">
+        <li>Hysteresis: 452 تشغيل / 450 إيقاف</li>
+        <li>مروحة: حرارة ≥ 27° → 40 ثانية</li>
+        <li>علف: صفير متقطع عند 5.2-400 سم</li>
+        <li>إضاءة تلقائية حسب LDR</li>
+      </ul>
+    </div>
+
+    <div class="card" id="lift">
+      <div class="card-icon" style="background:rgba(59,130,246,0.1);border-color:var(--accent-4);color:var(--accent-4);">
+        <i class="fas fa-elevator"></i>
+      </div>
+      <h3>مصعد السيارات الذكي</h3>
+      <p style="color:var(--text-2);margin-bottom:15px;">
+        مصعد 6 طوابق + كشف حضور + فتح/إغلاق تلقائي + تحكم كييباد. فلترة برمجية لمنع اهتزاز السيرفو.
+      </p>
+      <div class="case-specs" style="grid-template-columns:1fr 1fr;">
+        <div class="spec-item"><div class="spec-label">المتحكم</div><div class="spec-value">ESP8266</div></div>
+        <div class="spec-item"><div class="spec-label">الحساسات</div><div class="spec-value">Ultrasonic HC-SR04</div></div>
+        <div class="spec-item"><div class="spec-label">الإدخال</div><div class="spec-value">Keypad 2×3</div></div>
+        <div class="spec-item"><div class="spec-label">المخرجات</div><div class="spec-value">Servo + 2 Relays + Buzzer</div></div>
+      </div>
+      <h4 style="font-family:'Cairo',sans-serif;color:var(--accent);margin:20px 0 10px;">الميزات المبتكرة:</h4>
+      <ul class="service-features">
+        <li>كشف حضور + فتح تلقائي للبوابة</li>
+        <li>كل رقم = طابق → موتور (رقم × 4 ثواني)</li>
+        <li>إغلاق تلقائي بعد 3 ثوانٍ من المغادرة</li>
+        <li>Non-blocking مع millis() + فلترة السيرفو</li>
+      </ul>
+    </div>
+
+    <div class="card" style="background:linear-gradient(135deg,rgba(255,107,53,0.08),var(--card));border-color:var(--accent);">
+      <div class="card-icon"><i class="fas fa-lightbulb"></i></div>
+      <h3>مشاريع قيد التطوير</h3>
+      <p style="color:var(--text-2);margin-bottom:15px;">
+        نعمل حالياً على تطوير حلول جديدة:
+      </p>
+      <ul class="service-features">
+        <li>نظام KNX احترافي للفلل الفاخرة</li>
+        <li>تكامل مع Alexa و Google Assistant</li>
+        <li>لوحة تحكم ويب متقدمة</li>
+        <li>تكامل مع نظام طاقة شمسية أكبر</li>
+        <li>تطبيق iOS (بالتوازي مع Android)</li>
+      </ul>
+      <a href="../index.html#contact" class="btn btn-primary btn-sm" style="margin-top:15px;">
+        <i class="fas fa-envelope"></i> استفسر عن المشاريع القادمة
+      </a>
+    </div>
+  </div>
+</section>
+<footer>
+  <div class="footer-grid">
+    <div class="footer-brand">
+      <a href="../index.html" class="logo">
+        <div class="logo-icon">S</div>
+        <div class="logo-text"><span class="ar">سمارت بيلد</span><span class="en">SMARTBUILD.PS</span></div>
+      </a>
+      <p>شركة فلسطينية متخصصة في أنظمة المباني الذكية والأتمتة.</p>
+      <div class="social-links">
+        <a href="#" aria-label="Facebook"><i class="fab fa-facebook-f"></i></a>
+        <a href="#" aria-label="Instagram"><i class="fab fa-instagram"></i></a>
+        <a href="#" aria-label="WhatsApp"><i class="fab fa-whatsapp"></i></a>
+        <a href="#" aria-label="LinkedIn"><i class="fab fa-linkedin-in"></i></a>
+      </div>
+    </div>
+    <div class="footer-col"><h4>روابط سريعة</h4><ul>
+      <li><a href="../index.html">الرئيسية</a></li>
+      <li><a href="../about.html">من نحن</a></li>
+      <li><a href="../projects/index.html">مشاريعنا</a></li>
+      <li><a href="../configurator.html">حاسبة التكلفة</a></li>
+    </ul></div>
+    <div class="footer-col"><h4>خدماتنا</h4><ul>
+      <li><a href="../services/fire.html">إنذار حريق</a></li>
+      <li><a href="../services/security.html">إنذار سرقة</a></li>
+      <li><a href="../services/cameras.html">كاميرات مراقبة</a></li>
+      <li><a href="../services/solar.html">طاقة شمسية</a></li>
+    </ul></div>
+    <div class="footer-col"><h4>القانون والدعم</h4><ul>
+      <li><a href="../legal/terms.html">شروط الخدمة</a></li>
+      <li><a href="../legal/privacy.html">سياسة الخصوصية</a></li>
+      <li><a href="../portal/login.html">بوابة العميل</a></li>
+    </ul></div>
+  </div>
+  <div class="footer-bottom">
+    <p>© 2026 SmartBuild Palestine · جميع الحقوق محفوظة · صُمم بـ <span class="heart">♥</span> في دورا · فلسطين</p>
+  </div>
+</footer>
+<a href="https://wa.me/9705XXXXXXXX" class="whatsapp-float" target="_blank" aria-label="WhatsApp"><i class="fab fa-whatsapp"></i></a>
+<script src="../assets/js/main.js"></script>
+</body>
+</html>
