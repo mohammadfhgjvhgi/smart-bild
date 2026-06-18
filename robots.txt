@@ -1,0 +1,6 @@
+User-agent: *
+Allow: /
+Disallow: /portal/
+Disallow: /assets/js/
+
+Sitemap: https://mohammadfhgjvhgi.github.io/smart-bild/sitemap.xml

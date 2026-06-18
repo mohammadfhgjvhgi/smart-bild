@@ -1,0 +1,211 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>المدونة التقنية | SmartBuild Palestine</title>
+<meta name="description" content="مدونة SmartBuild Palestine التقنية - مقالات عن أنظمة المباني الذكية، KNX، الأتمتة، الطاقة الشمسية، ونصائح للأمان المنزلي">
+<meta name="keywords" content="مدونة تقنية, KNX, مباني ذكية, أتمتة, طاقة شمسية, إنذار حريق">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Cairo:wght@300;400;600;700;800;900&family=Tajawal:wght@300;400;500;700;900&family=JetBrains+Mono:wght@400;500;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+<link rel="stylesheet" href="../assets/css/main.css">
+<style>
+.blog-card{background:var(--card);border:1px solid var(--border);border-radius:16px;overflow:hidden;transition:var(--transition);display:flex;flex-direction:column;}
+.blog-card:hover{transform:translateY(-5px);border-color:var(--accent);box-shadow:var(--shadow);}
+.blog-image{height:200px;background:linear-gradient(135deg,var(--bg-3),var(--bg-2));display:flex;align-items:center;justify-content:center;font-size:4rem;color:var(--accent);position:relative;overflow:hidden;}
+.blog-image::before{content:'';position:absolute;inset:0;background:linear-gradient(135deg,rgba(255,107,53,0.2),rgba(255,182,39,0.1));}
+.blog-image i{position:relative;z-index:1;text-shadow:0 0 30px rgba(255,107,53,0.5);}
+.blog-cat{position:absolute;top:15px;right:15px;background:var(--accent);color:var(--bg);padding:5px 12px;border-radius:20px;font-size:0.75rem;font-weight:700;font-family:'JetBrains Mono',monospace;z-index:2;}
+.blog-content{padding:25px;flex:1;display:flex;flex-direction:column;}
+.blog-meta{display:flex;gap:15px;color:var(--text-2);font-size:0.8rem;font-family:'JetBrains Mono',monospace;margin-bottom:10px;flex-wrap:wrap;}
+.blog-meta i{margin-left:5px;color:var(--accent);}
+.blog-title{font-family:'Cairo',sans-serif;font-size:1.25rem;color:var(--text);margin-bottom:10px;font-weight:700;line-height:1.4;}
+.blog-excerpt{color:var(--text-2);font-size:0.9rem;margin-bottom:15px;flex:1;}
+.blog-link{display:inline-flex;align-items:center;gap:8px;color:var(--accent);font-weight:600;font-size:0.9rem;transition:var(--transition);}
+.blog-link:hover{gap:12px;}
+.newsletter-box{background:linear-gradient(135deg,rgba(255,107,53,0.1),rgba(255,182,39,0.05));border:1px solid var(--accent);border-radius:16px;padding:40px;text-align:center;margin-top:50px;}
+.newsletter-box h3{font-family:'Cairo',sans-serif;font-size:1.8rem;color:var(--text);margin-bottom:10px;}
+.newsletter-box p{color:var(--text-2);margin-bottom:25px;max-width:500px;margin-left:auto;margin-right:auto;}
+.newsletter-form{display:flex;gap:10px;max-width:500px;margin:0 auto;flex-wrap:wrap;}
+.newsletter-form input{flex:1;min-width:200px;padding:14px 18px;background:var(--bg);border:1px solid var(--border);border-radius:10px;color:var(--text);font-family:'Tajawal',sans-serif;font-size:1rem;}
+.newsletter-form input:focus{outline:none;border-color:var(--accent);}
+.newsletter-form button{padding:14px 25px;background:var(--gradient);color:var(--bg);border:none;border-radius:10px;font-family:'Cairo',sans-serif;font-weight:700;cursor:pointer;transition:var(--transition);}
+.newsletter-form button:hover{transform:translateY(-2px);box-shadow:0 8px 20px rgba(255,107,53,0.4);}
+</style>
+</head>
+<body>
+
+<nav id="navbar">
+  <a href="../index.html" class="logo">
+    <div class="logo-icon">S</div>
+    <div class="logo-text"><span class="ar">سمارت بيلد</span><span class="en">SMARTBUILD.PS</span></div>
+  </a>
+  <ul class="nav-links" id="navLinks">
+    <li><a href="../index.html">الرئيسية</a></li>
+    <li class="nav-dropdown">
+      <a href="../services/index.html">خدماتنا <i class="fas fa-chevron-down" style="font-size:0.7rem;"></i></a>
+      <div class="nav-dropdown-menu">
+        <a href="../services/fire.html"><i class="fas fa-fire-extinguisher"></i> إنذار الحريق</a>
+        <a href="../services/security.html"><i class="fas fa-bell"></i> إنذار السرقة</a>
+        <a href="../services/cameras.html"><i class="fas fa-video"></i> كاميرات المراقبة</a>
+        <a href="../services/automation.html"><i class="fas fa-house-laptop"></i> الأتمتة المنزلية</a>
+        <a href="../services/solar.html"><i class="fas fa-solar-panel"></i> الطاقة الشمسية</a>
+        <a href="../services/curtains.html"><i class="fas fa-blinds"></i> الستائر الذكية</a>
+        <a href="../services/underfloor.html"><i class="fas fa-temperature-high"></i> تدفئة تحت البلاط</a>
+        <a href="../services/audio.html"><i class="fas fa-music"></i> الأنظمة الصوتية</a>
+        <a href="../services/irrigation.html"><i class="fas fa-seedling"></i> الري الذكي</a>
+      </div>
+    </li>
+    <li><a href="../projects/index.html">مشاريعنا</a></li>
+    <li><a href="../blog/index.html">المدونة</a></li>
+    <li><a href="index.html" class="active">المدونة</a></li>
+    <li><a href="../about.html">من نحن</a></li>
+    <li><a href="../configurator.html">حاسبة التكلفة</a></li>
+    <li><a href="../index.html#contact" class="nav-cta">اطلب عرض سعر</a></li>
+  </ul>
+  <button class="menu-toggle" id="menuToggle"><i class="fas fa-bars"></i></button>
+</nav>
+
+<section class="page-header">
+  <div class="page-header-content">
+    <div class="breadcrumb">
+      <a href="../index.html">الرئيسية</a>
+      <span class="separator">/</span>
+      <span>المدونة</span>
+    </div>
+    <h1 class="page-title">مدونة <span class="accent">SmartBuild</span></h1>
+    <p class="page-subtitle">مقالات تقنية متخصصة في أنظمة المباني الذكية والأتمتة والطاقة المتجددة</p>
+  </div>
+</section>
+
+<section>
+  <div class="grid grid-3">
+    <article class="blog-card">
+      <div class="blog-image">
+        <span class="blog-cat">KNX</span>
+        <i class="fas fa-network-wired"></i>
+      </div>
+      <div class="blog-content">
+        <div class="blog-meta">
+          <span><i class="fas fa-calendar"></i> 15 يونيو 2026</span>
+          <span><i class="fas fa-clock"></i> 7 دقائق</span>
+        </div>
+        <h3 class="blog-title">بروتوكول KNX: لماذا هو المعيار الذهبي لأنظمة المباني الذكية؟</h3>
+        <p class="blog-excerpt">تعرف على بروتوكول KNX العالمي، لماذا تعتمده كبرى الشركات العالمية، وكيف يضمن استقرار وأمان أنظمة الأتمتة في المنشآت الحديثة.</p>
+        <a href="knx-protocol.html" class="blog-link">اقرأ المقال <i class="fas fa-arrow-left"></i></a>
+      </div>
+    </article>
+
+    <article class="blog-card">
+      <div class="blog-image">
+        <span class="blog-cat">الأمان</span>
+        <i class="fas fa-shield-halved"></i>
+      </div>
+      <div class="blog-content">
+        <div class="blog-meta">
+          <span><i class="fas fa-calendar"></i> 10 يونيو 2026</span>
+          <span><i class="fas fa-clock"></i> 5 دقائق</span>
+        </div>
+        <h3 class="blog-title">دليلك الشامل لاختيار نظام إنذار الحريق المناسب لمنشأتك</h3>
+        <p class="blog-excerpt">مقارنة شاملة بين أنواع أنظمة إنذار الحريق، المعايير الدولية (NFPA 101)، وكيف تختار النظام الأمثل لمبنك حسب المساحة والاستخدام.</p>
+        <a href="fire-alarm-guide.html" class="blog-link">اقرأ المقال <i class="fas fa-arrow-left"></i></a>
+      </div>
+    </article>
+
+    <article class="blog-card">
+      <div class="blog-image">
+        <span class="blog-cat">الطاقة</span>
+        <i class="fas fa-solar-panel"></i>
+      </div>
+      <div class="blog-content">
+        <div class="blog-meta">
+          <span><i class="fas fa-calendar"></i> 5 يونيو 2026</span>
+          <span><i class="fas fa-clock"></i> 8 دقائق</span>
+        </div>
+        <h3 class="blog-title">الطاقة الشمسية + الأتمتة: الحل الذهبي لفلسطين</h3>
+        <p class="blog-excerpt">كيف يجمع نظامنا بين الطاقة المتجددة وأنظمة الأتمتة الذكية لتوفير حلول مستدامة تعمل حتى عند انقطاع الكهرباء.</p>
+        <a href="solar-automation.html" class="blog-link">اقرأ المقال <i class="fas fa-arrow-left"></i></a>
+      </div>
+    </article>
+
+    <article class="blog-card">
+      <div class="blog-image">
+        <span class="blog-cat">الرفاهية</span>
+        <i class="fas fa-couch"></i>
+      </div>
+      <div class="blog-content">
+        <div class="blog-meta">
+          <span><i class="fas fa-calendar"></i> 1 يونيو 2026</span>
+          <span><i class="fas fa-clock"></i> 6 دقائق</span>
+        </div>
+        <h3 class="blog-title">5 أنظمة رفاهية ترفع قيمة فيلتك بنسبة 20%</h3>
+        <p class="blog-excerpt">من الستائر الذكية إلى الأنظمة الصوتية متعددة المناطق — تعرف على الأنظمة التي تضيف قيمة حقيقية لمنشأتك.</p>
+        <a href="luxury-systems.html" class="blog-link">اقرأ المقال <i class="fas fa-arrow-left"></i></a>
+      </div>
+    </article>
+  </div>
+
+  <div class="newsletter-box">
+    <h3>📧 اشترك في نشرتنا البريدية</h3>
+    <p>احصل على أحدث المقالات التقنية + نصائح حصرية + عروض خاصة على خدماتنا</p>
+    <form class="newsletter-form" action="https://formsubmit.co/your-email@example.com" method="POST">
+      <input type="hidden" name="_subject" value="اشتراك جديد في النشرة البريدية">
+      <input type="email" name="email" required placeholder="بريدك الإلكتروني">
+      <button type="submit"><i class="fas fa-paper-plane"></i> اشترك الآن</button>
+    </form>
+    <p style="color:var(--text-2);font-size:0.8rem;margin-top:15px;">🔒 نحترم خصوصيتك — لا رسائل مزعجة</p>
+  </div>
+</section>
+
+<footer>
+  <div class="footer-grid">
+    <div class="footer-brand">
+      <a href="../index.html" class="logo">
+        <div class="logo-icon">S</div>
+        <div class="logo-text"><span class="ar">سمارت بيلد</span><span class="en">SMARTBUILD.PS</span></div>
+      </a>
+      <p>شركة فلسطينية متخصصة في أنظمة المباني الذكية والأتمتة.</p>
+      <div class="newsletter-footer" style="margin:20px 0;padding:15px;background:var(--bg);border-radius:10px;border:1px solid var(--border);">
+        <h5 style="font-family:'Cairo',sans-serif;color:var(--accent);font-size:0.95rem;margin-bottom:8px;">📧 النشرة البريدية</h5>
+        <p style="color:var(--text-2);font-size:0.8rem;margin-bottom:10px;">احصل على أحدث المقالات والعروض</p>
+        <form style="display:flex;gap:5px;" action="https://formsubmit.co/your-email@example.com" method="POST">
+          <input type="hidden" name="_subject" value="اشتراك من الفوتر">
+          <input type="email" name="email" required placeholder="بريدك" style="flex:1;padding:8px 10px;background:var(--bg-2);border:1px solid var(--border);border-radius:6px;color:var(--text);font-size:0.85rem;font-family:'Tajawal',sans-serif;">
+          <button type="submit" style="padding:8px 15px;background:var(--accent);color:var(--bg);border:none;border-radius:6px;cursor:pointer;font-weight:700;font-family:'Cairo',sans-serif;font-size:0.85rem;">اشترك</button>
+        </form>
+      </div>
+      <div class="social-links">
+        <a href="#" aria-label="Facebook"><i class="fab fa-facebook-f"></i></a>
+        <a href="#" aria-label="Instagram"><i class="fab fa-instagram"></i></a>
+        <a href="#" aria-label="WhatsApp"><i class="fab fa-whatsapp"></i></a>
+        <a href="#" aria-label="LinkedIn"><i class="fab fa-linkedin-in"></i></a>
+      </div>
+    </div>
+    <div class="footer-col"><h4>روابط سريعة</h4><ul>
+      <li><a href="../index.html">الرئيسية</a></li>
+      <li><a href="../about.html">من نحن</a></li>
+      <li><a href="index.html">المدونة</a></li>
+      <li><a href="../configurator.html">حاسبة التكلفة</a></li>
+    </ul></div>
+    <div class="footer-col"><h4>خدماتنا</h4><ul>
+      <li><a href="../services/fire.html">إنذار حريق</a></li>
+      <li><a href="../services/automation.html">أتمتة منزلية</a></li>
+      <li><a href="../services/curtains.html">ستائر ذكية</a></li>
+      <li><a href="../services/solar.html">طاقة شمسية</a></li>
+    </ul></div>
+    <div class="footer-col"><h4>القانون والدعم</h4><ul>
+      <li><a href="../legal/terms.html">شروط الخدمة</a></li>
+      <li><a href="../legal/privacy.html">سياسة الخصوصية</a></li>
+      <li><a href="../portal/login.html">بوابة العميل</a></li>
+    </ul></div>
+  </div>
+  <div class="footer-bottom">
+    <p>© 2026 SmartBuild Palestine · جميع الحقوق محفوظة · صُمم بـ <span class="heart">♥</span> في دورا · فلسطين</p>
+  </div>
+</footer>
+
+<a href="https://wa.me/9705XXXXXXXX" class="whatsapp-float" target="_blank" aria-label="WhatsApp"><i class="fab fa-whatsapp"></i></a>
+<script src="../assets/js/main.js"></script>
+</body>
+</html>
