@@ -1,6 +1,12 @@
 User-agent: *
 Allow: /
-Disallow: /portal/
+Allow: /sitemap.xml
+Disallow: /portal/dashboard.html
 Disallow: /assets/js/
 
+# Block AI crawlers from forms
+User-agent: GPTBot
+Disallow: /portal/
+
 Sitemap: https://mohammadfhgjvhgi.github.io/smart-bild/sitemap.xml
+Host: https://mohammadfhgjvhgi.github.io
